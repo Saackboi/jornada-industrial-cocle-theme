@@ -27,6 +27,7 @@ function jornada_industrial_register_block_ji_navbar() {
                 'align' => array( 'wide', 'full' ),
             ),
             'controls' => array(
+                'control_navv2_logo'  => array( 'type' => 'image', 'name' => 'brand_logo', 'label' => 'Logo de la Facultad', 'placement' => 'inspector' ),
                 'control_navv2_brand' => array( 'type' => 'text', 'name' => 'brand_text', 'label' => 'Texto del Logotipo', 'placement' => 'inspector', 'default' => 'III Jornada Industrial' ),
                 'control_navv2_links' => array(
                     'type' => 'repeater',

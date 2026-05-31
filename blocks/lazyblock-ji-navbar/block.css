@@ -43,6 +43,15 @@
     color: #0a192f;
     text-decoration: none;
     transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bloque-ji-navbar-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
 }
 
 .bloque-ji-navbar-logo-link:hover {

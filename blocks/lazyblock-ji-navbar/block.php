@@ -4,6 +4,8 @@
  */
 
 $brand_text = isset( $attributes['brand_text'] ) ? $attributes['brand_text'] : 'III Jornada Industrial';
+$brand_logo = isset( $attributes['brand_logo'] ) ? $attributes['brand_logo'] : '';
+$logo_url   = function_exists( 'ji_get_block_image_url' ) ? ji_get_block_image_url( $brand_logo ) : '';
 $nav_links  = isset( $attributes['nav_links'] ) && is_array( $attributes['nav_links'] ) ? $attributes['nav_links'] : array();
 $btn_text   = isset( $attributes['btn_text'] ) ? $attributes['btn_text'] : 'REGISTRO';
 $btn_url    = isset( $attributes['btn_url'] ) ? $attributes['btn_url'] : '#';
@@ -23,7 +25,10 @@ if ( isset( $attributes['className'] ) && ! empty( $attributes['className'] ) ) 
         <!-- Logotipo -->
         <div class="bloque-ji-navbar-brand">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="bloque-ji-navbar-logo-link">
-                <?php echo esc_html( $brand_text ); ?>
+                <?php if ( ! empty( $logo_url ) ) : ?>
+                    <img src="<?php echo esc_url( $logo_url ); ?>" alt="Logo Facultad" class="bloque-ji-navbar-logo-img">
+                <?php endif; ?>
+                <span class="bloque-ji-navbar-brand-name"><?php echo esc_html( $brand_text ); ?></span>
             </a>
         </div>
 
