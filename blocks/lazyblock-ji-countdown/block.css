@@ -1,0 +1,152 @@
+/* Estilos para el bloque JI - Contador Regresivo */
+
+.bloque-ji-countdown {
+    background-color: #0a192f; /* Dark Blue background */
+    padding: 100px 0;
+    width: 100%;
+    color: #ffffff; /* White text */
+    box-sizing: border-box;
+    font-family: 'Hanken Grotesk', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bloque-ji-countdown.alignfull {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.bloque-ji-countdown-layout {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 48px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Centered and stacked vertically */
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+}
+
+.bloque-ji-countdown-header {
+    max-width: 600px;
+}
+
+.bloque-ji-countdown-overline {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #c19a5b;
+    margin-bottom: 12px;
+}
+
+.bloque-ji-countdown-title {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff; /* White title */
+    line-height: 1.2;
+}
+
+/* Rejilla del contador */
+.bloque-ji-countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 150px);
+    gap: 24px;
+    justify-content: center;
+}
+
+.bloque-ji-countdown-card {
+    position: relative;
+    background: #ffffff; /* White card background */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Strong shadow relief on dark bg */
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 0;
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+/* Golden top border accent */
+.bloque-ji-countdown-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #c19a5b 0%, #e6c587 100%);
+    border-radius: 12px 12px 0 0;
+}
+
+.bloque-ji-countdown-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+    border-color: rgba(193, 154, 91, 0.4);
+}
+
+.bloque-ji-countdown-number {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: #0a192f; /* Dark blue number for high contrast on white card */
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.bloque-ji-countdown-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #c19a5b;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .bloque-ji-countdown-layout {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+    }
+    
+    .bloque-ji-countdown-header {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .bloque-ji-countdown {
+        padding: 60px 0;
+    }
+    .bloque-ji-countdown-layout {
+        padding: 0 24px;
+    }
+    .bloque-ji-countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        max-width: 320px;
+        gap: 16px;
+        margin: 0 auto;
+    }
+    .bloque-ji-countdown-card {
+        padding: 24px 0;
+    }
+    .bloque-ji-countdown-number {
+        font-size: 40px;
+    }
+    .bloque-ji-countdown-label {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+    }
+}

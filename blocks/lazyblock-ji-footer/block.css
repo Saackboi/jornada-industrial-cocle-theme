@@ -1,0 +1,122 @@
+/* Estilos para el bloque JI - Footer General */
+
+.bloque-ji-footer {
+    background-color: #0a192f;
+    padding: 80px 0 0 0;
+    width: 100%;
+    color: #ffffff;
+    box-sizing: border-box;
+    font-family: 'Hanken Grotesk', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bloque-ji-footer.alignfull {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.bloque-ji-footer-layout {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 48px 56px 48px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 64px;
+}
+
+/* Columna de Información Principal */
+.bloque-ji-footer-main {
+    max-width: 480px;
+}
+
+.bloque-ji-footer-brand {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    color: #ffffff;
+}
+
+.bloque-ji-footer-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+/* Columnas de Enlaces */
+.bloque-ji-footer-col-title {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 24px 0;
+    color: #ffffff;
+}
+
+.bloque-ji-footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bloque-ji-footer-links a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.bloque-ji-footer-links a:hover {
+    color: #c19a5b;
+    transform: translateX(4px);
+}
+
+/* Barra Inferior */
+.bloque-ji-footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 24px 0;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.bloque-ji-footer-bottom-layout {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 48px;
+    box-sizing: border-box;
+}
+
+.bloque-ji-footer-copy {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .bloque-ji-footer-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .bloque-ji-footer-main {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .bloque-ji-footer {
+        padding-top: 60px;
+    }
+    .bloque-ji-footer-layout {
+        padding: 0 24px 40px 24px;
+    }
+    .bloque-ji-footer-bottom-layout {
+        padding: 0 24px;
+    }
+}

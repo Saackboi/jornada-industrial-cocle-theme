@@ -1,0 +1,135 @@
+.bloque-ji-labels {
+    background-color: #ffffff;
+    padding: 40px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.bloque-ji-labels-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Lista del Repeater */
+.bloque-ji-labels-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+    animation: jiLabelsFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    opacity: 0; /* Empieza oculto para la animación */
+}
+
+/* Elemento Individual */
+.bloque-ji-labels-item {
+    flex: 1 1 auto;
+    text-align: center;
+    min-width: 100px;
+}
+
+.bloque-ji-labels-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #999999; /* Gris sutil del mockup */
+    letter-spacing: -0.5px;
+    display: inline-block;
+}
+
+.bloque-ji-labels-link {
+    font-size: 16px;
+    font-weight: 600;
+    color: #999999;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.bloque-ji-labels-link:hover {
+    color: #e12b24; /* Color de acento rojo */
+    transform: translateY(-1px);
+}
+
+/* Estilos del Placeholder en el Editor */
+.bloque-ji-labels-placeholder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.bloque-ji-labels-text-placeholder {
+    font-size: 16px;
+    font-weight: 600;
+    color: #bbbbbb;
+    letter-spacing: -0.5px;
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+/* Animación de entrada */
+@keyframes jiLabelsFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Alineaciones Gutenberg */
+.bloque-ji-labels.alignfull {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.bloque-ji-labels.alignfull .bloque-ji-labels-layout {
+    max-width: 1200px;
+}
+
+.bloque-ji-labels.alignwide {
+    max-width: 1400px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bloque-ji-labels.alignwide .bloque-ji-labels-layout {
+    max-width: 1400px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .bloque-ji-labels {
+        padding: 30px 20px;
+    }
+    
+    .bloque-ji-labels-list,
+    .bloque-ji-labels-placeholder {
+        gap: 20px;
+    }
+    
+    .bloque-ji-labels-item {
+        min-width: 80px;
+    }
+    
+    .bloque-ji-labels-text,
+    .bloque-ji-labels-link,
+    .bloque-ji-labels-text-placeholder {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,143 @@
+.bloque-ji-nav {
+    background-color: #ffffff;
+    padding: 24px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    border-bottom: 1px solid #f1f1f1;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.bloque-ji-nav-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    gap: 20px;
+}
+
+/* Logotipo */
+.bloque-ji-nav-brand {
+    flex-shrink: 0;
+}
+
+.bloque-ji-nav-logo-link {
+    font-size: 22px;
+    font-weight: 800;
+    color: #e12b24; /* Rojo/Naranja de acento del diseño */
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: opacity 0.2s;
+}
+
+.bloque-ji-nav-logo-link:hover {
+    opacity: 0.85;
+}
+
+/* Enlaces del Menu */
+.bloque-ji-nav-menu {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.bloque-ji-nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 28px;
+}
+
+.bloque-ji-nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555555;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.bloque-ji-nav-link:hover {
+    color: #e12b24;
+}
+
+/* Botón de Acción */
+.bloque-ji-nav-actions {
+    flex-shrink: 0;
+}
+
+.bloque-ji-nav-btn {
+    display: inline-block;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111111;
+    background-color: transparent;
+    border: 1px solid #c5c5c5;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bloque-ji-nav-btn:hover {
+    border-color: #111111;
+    background-color: #111111;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Alineaciones de Gutenberg */
+.bloque-ji-nav.alignfull {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.bloque-ji-nav.alignfull .bloque-ji-nav-layout {
+    max-width: 1200px;
+}
+
+.bloque-ji-nav.alignwide {
+    max-width: 1400px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bloque-ji-nav.alignwide .bloque-ji-nav-layout {
+    max-width: 1400px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .bloque-ji-nav {
+        padding: 16px 20px;
+    }
+    
+    .bloque-ji-nav-layout {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .bloque-ji-nav-menu {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+    
+    .bloque-ji-nav-list {
+        gap: 20px;
+    }
+    
+    .bloque-ji-nav-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}

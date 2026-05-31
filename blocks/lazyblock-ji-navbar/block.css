@@ -1,0 +1,169 @@
+/* Estilos para el bloque JI - Navegación Principal V2 */
+
+.bloque-ji-navbar {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid #f3f4f6;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    box-sizing: border-box;
+    font-family: 'Hanken Grotesk', sans-serif;
+}
+
+.bloque-ji-navbar.alignfull {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.bloque-ji-navbar-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 48px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Logotipo */
+.bloque-ji-navbar-brand {
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+}
+
+.bloque-ji-navbar-logo-link {
+    color: #0a192f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.bloque-ji-navbar-logo-link:hover {
+    color: #c19a5b;
+}
+
+/* Enlaces de Navegación */
+.bloque-ji-navbar-menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.bloque-ji-navbar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 40px;
+}
+
+.bloque-ji-navbar-link {
+    color: rgba(10, 25, 47, 0.6);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transition: all 0.3s ease;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+}
+
+.bloque-ji-navbar-link:hover {
+    color: #c19a5b;
+}
+
+/* Enlace activo (primer enlace por defecto para fines demostrativos en el CSS) */
+.bloque-ji-navbar-list li:first-child .bloque-ji-navbar-link {
+    color: #0a192f;
+    border-bottom-color: #c19a5b;
+}
+
+/* Acciones y Botón */
+.bloque-ji-navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.bloque-ji-navbar-btn {
+    background-color: #0a192f;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.bloque-ji-navbar-btn:hover {
+    background-color: #c19a5b;
+    color: #ffffff;
+}
+
+/* Botón toggle móvil */
+.bloque-ji-navbar-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #0a192f;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.bloque-ji-navbar-mobile-toggle span {
+    font-size: 30px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .bloque-ji-navbar-layout {
+        padding: 20px 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bloque-ji-navbar-mobile-toggle {
+        display: block;
+    }
+    
+    .bloque-ji-navbar-menu-container {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        border-bottom: 1px solid #f3f4f6;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        padding: 24px;
+        box-sizing: border-box;
+        z-index: 999;
+    }
+    
+    .bloque-ji-navbar.mobile-menu-active .bloque-ji-navbar-menu-container {
+        display: block;
+    }
+    
+    .bloque-ji-navbar-list {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+    
+    .bloque-ji-navbar-btn {
+        display: none; /* Se oculta el botón en móvil para diseño minimalista */
+    }
+}

@@ -1,0 +1,176 @@
+.bloque-hero-notion {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 80px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Alineaciones especiales de Gutenberg en Frontend/Editor */
+.bloque-hero-notion.alignfull {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.bloque-hero-notion.alignfull .bloque-hero-notion-layout {
+    max-width: 100%;
+}
+.bloque-hero-notion.alignwide {
+    max-width: 1400px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.bloque-hero-notion.alignwide .bloque-hero-notion-layout {
+    max-width: 100%;
+}
+
+.bloque-hero-notion-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* Columnas estables: 60% texto, 40% imagen */
+    align-items: center;
+    gap: 40px;
+}
+
+.bloque-hero-notion-content {
+    /* Animación de entrada suave para el texto */
+    animation: heroFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.bloque-hero-notion-title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+}
+
+.bloque-hero-notion-subtitle {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: #000000;
+    margin-bottom: 40px;
+    max-width: 480px;
+}
+
+.bloque-hero-notion-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.btn-notion-primary {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-notion-primary:hover {
+    background-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-notion-secondary {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: transparent;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-notion-secondary:hover {
+    background-color: #f5f5f5;
+    transform: translateY(-2px);
+}
+
+.bloque-hero-notion-logos .logos-title {
+    font-size: 0.875rem;
+    color: #777777;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.bloque-hero-notion-logos img {
+    max-width: 100%;
+    max-height: 40px; /* Evita que los logos se vean gigantes */
+    width: auto;
+    object-fit: contain;
+    opacity: 0.8;
+}
+
+.bloque-hero-notion-illustration {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; /* Centrar verticalmente */
+    min-width: 0; /* Previene el desbordamiento en CSS Grid */
+}
+
+.bloque-hero-notion-illustration img {
+    width: 100%; /* Toma el 100% de su celda de la columna */
+    max-width: 100%;
+    max-height: 500px; /* Limita la altura de la ilustración gigante */
+    height: auto;
+    object-fit: contain;
+    /* Animación flotante infinita súper suave */
+    animation: heroFloat 6s ease-in-out infinite;
+}
+
+/* Definición de Animaciones */
+@keyframes heroFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroFloat {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Responsividad básica */
+@media (max-width: 768px) {
+    .bloque-hero-notion-layout {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        gap: 20px;
+    }
+    .bloque-hero-notion-title {
+        font-size: 2.5rem;
+    }
+    .bloque-hero-notion-subtitle {
+        font-size: 1.25rem;
+    }
+    .bloque-hero-notion-illustration {
+        justify-content: center;
+    }
+}
