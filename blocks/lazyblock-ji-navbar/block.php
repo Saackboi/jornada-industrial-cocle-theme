@@ -43,15 +43,14 @@ if ( isset( $attributes['className'] ) && ! empty( $attributes['className'] ) ) 
                         
                         $is_dropdown = isset( $link['is_dropdown'] ) && ( true === $link['is_dropdown'] || 'true' === $link['is_dropdown'] );
                         $submenu_items = array();
-
-                        if ( $is_dropdown && isset( $link['sub_links'] ) && is_array( $link['sub_links'] ) ) {
-                            foreach ( $link['sub_links'] as $sub ) {
-                                $sub_label = isset( $sub['sub_label'] ) ? trim( $sub['sub_label'] ) : '';
-                                $sub_url   = isset( $sub['sub_url'] ) ? trim( $sub['sub_url'] ) : '#';
-                                if ( ! empty( $sub_label ) ) {
+                        if ( $is_dropdown ) {
+                            for ( $i = 1; $i <= 5; $i++ ) {
+                                $sub_txt = isset( $link["sub{$i}_txt"] ) ? trim( $link["sub{$i}_txt"] ) : '';
+                                $sub_url = isset( $link["sub{$i}_url"] ) ? trim( $link["sub{$i}_url"] ) : '';
+                                if ( ! empty( $sub_txt ) ) {
                                     $submenu_items[] = array(
-                                        'label' => $sub_label,
-                                        'url'   => $sub_url,
+                                        'label' => $sub_txt,
+                                        'url'   => ! empty( $sub_url ) ? $sub_url : '#',
                                     );
                                 }
                             }
