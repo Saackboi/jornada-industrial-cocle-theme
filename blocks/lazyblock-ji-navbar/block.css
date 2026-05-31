@@ -72,6 +72,12 @@
     gap: 40px;
 }
 
+.bloque-ji-navbar-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .bloque-ji-navbar-link {
     color: rgba(10, 25, 47, 0.6);
     text-decoration: none;
@@ -82,14 +88,78 @@
     transition: all 0.3s ease;
     padding-bottom: 4px;
     border-bottom: 2px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.bloque-ji-navbar-link .dropdown-icon {
+    font-size: 16px;
+    transition: transform 0.3s ease;
 }
 
 .bloque-ji-navbar-link:hover {
     color: #c19a5b;
 }
 
+/* Dropdown Menu */
+.bloque-ji-navbar-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #ffffff;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    list-style: none;
+    margin: 0;
+    padding: 16px 0;
+    min-width: 220px;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.bloque-ji-navbar-item.has-dropdown:hover .bloque-ji-navbar-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.bloque-ji-navbar-item.has-dropdown:hover .bloque-ji-navbar-link {
+    color: #c19a5b;
+}
+
+.bloque-ji-navbar-item.has-dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.bloque-ji-navbar-dropdown-item {
+    width: 100%;
+}
+
+.bloque-ji-navbar-dropdown-item a {
+    display: block;
+    padding: 10px 24px;
+    color: rgba(10, 25, 47, 0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.bloque-ji-navbar-dropdown-item a:hover {
+    color: #c19a5b;
+    background-color: #f9fafb;
+    padding-left: 28px;
+}
+
 /* Enlace activo (primer enlace por defecto para fines demostrativos en el CSS) */
-.bloque-ji-navbar-list li:first-child .bloque-ji-navbar-link {
+.bloque-ji-navbar-list > li:first-child > .bloque-ji-navbar-link {
     color: #0a192f;
     border-bottom-color: #c19a5b;
 }
@@ -170,6 +240,45 @@
         flex-direction: column;
         gap: 20px;
         align-items: flex-start;
+        width: 100%;
+    }
+
+    .bloque-ji-navbar-item {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bloque-ji-navbar-item.has-dropdown {
+        width: 100%;
+    }
+
+    .bloque-ji-navbar-link {
+        width: 100%;
+        justify-content: space-between;
+        padding: 10px 0;
+    }
+
+    .bloque-ji-navbar-dropdown {
+        position: static;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        box-shadow: none;
+        border: none;
+        padding: 0 0 10px 16px;
+        width: 100%;
+        display: none;
+        min-width: 0;
+        background: transparent;
+    }
+
+    .bloque-ji-navbar-item.has-dropdown.active .bloque-ji-navbar-dropdown {
+        display: block;
+    }
+
+    .bloque-ji-navbar-item.has-dropdown.active .dropdown-icon {
+        transform: rotate(180deg);
     }
     
     .bloque-ji-navbar-btn {
