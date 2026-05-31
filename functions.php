@@ -130,6 +130,96 @@ function jornada_industrial_enqueue_block_editor_inline_script() {
                 }
                 return args;
             });
+
+            // Filtros para solucionar el problema del repetidor anidado (nested repeater) de Lazy Blocks
+            function getNavLinks(parentProps) {
+                var rawNavLinks = parentProps && parentProps.attributes && parentProps.attributes.nav_links;
+                var navLinks = [];
+                if (typeof rawNavLinks === 'string' && rawNavLinks !== '') {
+                    try {
+                        var decoded = decodeURIComponent(rawNavLinks);
+                        navLinks = JSON.parse(decoded);
+                    } catch (e) {
+                        try {
+                            navLinks = JSON.parse(rawNavLinks);
+                        } catch (err) {
+                            try {
+                                navLinks = JSON.parse(decodeURI(rawNavLinks));
+                            } catch (err2) {}
+                        }
+                    }
+                } else if (Array.isArray(rawNavLinks)) {
+                    navLinks = rawNavLinks;
+                }
+                return navLinks || [];
+            }
+
+            function saveNavLinks(parentProps, navLinks) {
+                if (parentProps && parentProps.setAttributes) {
+                    var serialized = rawurlencode(JSON.stringify(navLinks));
+                    parentProps.setAttributes({
+                        nav_links: serialized
+                    });
+                }
+            }
+
+            window.wp.hooks.addFilter('lzb.editor.control.repeater.render', 'jornada-industrial/sub-repeater-render-fix', function(render, props, parentProps) {
+                if (props.data && props.data.name === 'sub_links') {
+                    var parentIndex = props.childIndex; // i
+                    
+                    var navLinks = getNavLinks(parentProps);
+                    var parentLink = navLinks[parentIndex];
+                    
+                    // Si el enlace padre no tiene marcado 'is_dropdown', no renderizamos este control (lo ocultamos)
+                    if (!parentLink || !parentLink.is_dropdown) {
+                        return null;
+                    }
+                    
+                    var originalRenderControls = props.renderControls;
+                    props.renderControls = function() {
+                        window.lazyblocksSubLinksParentIndex = parentIndex;
+                        try {
+                            return originalRenderControls.apply(this, arguments);
+                        } finally {
+                            window.lazyblocksSubLinksParentIndex = undefined;
+                        }
+                    };
+                }
+                return render;
+            }, 5);
+
+            function wrapControlProps(render, props, parentProps) {
+                if (props.data && props.data.child_of === 'control_navv2_links_sub_links') {
+                    var parentIndex = window.lazyblocksSubLinksParentIndex;
+                    var childIndex = props.childIndex; // j
+                    
+                    if (parentIndex !== undefined && parentProps) {
+                        props.getValue = function() {
+                            var navLinks = getNavLinks(parentProps);
+                            var parentLink = navLinks[parentIndex];
+                            if (parentLink && parentLink.sub_links && parentLink.sub_links[childIndex]) {
+                                return parentLink.sub_links[childIndex][props.data.name] || '';
+                            }
+                            return '';
+                        };
+                        
+                        props.onChange = function(newVal) {
+                            var navLinks = getNavLinks(parentProps);
+                            var parentLink = navLinks[parentIndex];
+                            if (parentLink) {
+                                parentLink.sub_links = parentLink.sub_links || [];
+                                parentLink.sub_links[childIndex] = parentLink.sub_links[childIndex] || {};
+                                parentLink.sub_links[childIndex][props.data.name] = newVal;
+                                saveNavLinks(parentProps, navLinks);
+                            }
+                        };
+                    }
+                }
+                return render;
+            }
+
+            window.wp.hooks.addFilter('lzb.editor.control.text.render', 'jornada-industrial/sub-control-text-render-fix', wrapControlProps, 5);
+            window.wp.hooks.addFilter('lzb.editor.control.url.render', 'jornada-industrial/sub-control-url-render-fix', wrapControlProps, 5);
         }
     })();";
     wp_add_inline_script( 'lazyblocks-editor', $js_code, 'before' );
