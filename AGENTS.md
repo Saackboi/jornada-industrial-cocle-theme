@@ -151,6 +151,13 @@ A lo largo del desarrollo de los bloques `Hero` y `CTA` se resolvieron varios pr
   - El bucle Loop estándar con `the_content()` para pintar los bloques Gutenberg.
   - `wp_footer()` antes del cierre de body para scripts de administración y barra de WordPress.
 
+### E. Bloqueo de escritura (inputs bloqueados) en repeaters anidados
+* **Causa:** Gutenberg serializa y almacena los valores de los repetidores padres (como `nav_links`) como un string JSON codificado en URL. Al renderizar campos de un sub-repetidor hijo (segundo nivel como `sub_links`), Lazy Blocks intenta actualizar un atributo `sub_links` directo que no existe en el bloque, lo que trata al string como un tipo primitivo inmutable y bloquea la entrada del teclado.
+* **Solución:** Interceptar los sub-controles con filtros JS en `functions.php` (`lzb.editor.control.text.render` y `lzb.editor.control.url.render`) y:
+  1. Decodificar y parsear el string JSON del atributo padre (`JSON.parse(decodeURIComponent(nav_links))`).
+  2. Modificar el valor del sub-control dentro del array resultante utilizando el índice del padre.
+  3. Volver a serializar y codificar el array completo para actualizar el atributo padre con `setAttributes({ nav_links: serialized })`.
+
 ---
 
 *Mantén este documento actualizado ante cualquier nueva lección aprendida o decisión de arquitectura.*
