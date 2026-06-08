@@ -57,7 +57,14 @@ if ( isset( $attributes['className'] ) && ! empty( $attributes['className'] ) ) 
                             }
                         }
                         
+                        $current_page = trailingslashit( home_url( add_query_arg( array(), $_SERVER['REQUEST_URI'] ) ) );
+                        $link_full   = trailingslashit( $link_url );
+                        $is_active   = ( $current_page === $link_full );
+
                         $item_classes = 'bloque-ji-navbar-item';
+                        if ( $is_active ) {
+                            $item_classes .= ' is-active';
+                        }
                         if ( ! empty( $submenu_items ) ) {
                             $item_classes .= ' has-dropdown';
                         }

@@ -1,0 +1,165 @@
+.bloque-ji-section-divider {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.bloque-ji-section-divider.alignfull {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.bloque-ji-section-divider.to-primary {
+    margin-bottom: -2px;
+    z-index: 2;
+}
+
+.bloque-ji-section-divider.to-primary + .bloque-ji-countdown,
+.bloque-ji-section-divider.to-primary + .bloque-ji-location,
+.bloque-ji-section-divider.to-primary + .bloque-ji-footer,
+.bloque-ji-section-divider.to-primary + .bloque-ji-contact-social {
+    border-top: 0;
+}
+
+.bloque-ji-section-divider.size-small {
+    height: 32px;
+}
+
+.bloque-ji-section-divider.size-medium {
+    height: 56px;
+}
+
+.bloque-ji-section-divider.size-large {
+    height: 88px;
+}
+
+.bloque-ji-section-divider.from-light,
+.bloque-ji-section-divider.from-light .bloque-ji-section-divider-inner {
+    background: var(--ji-color-white);
+}
+
+.bloque-ji-section-divider.from-primary,
+.bloque-ji-section-divider.from-primary .bloque-ji-section-divider-inner {
+    background-color: var(--ji-color-primary);
+    background-image: var(--ji-pattern-mesh);
+}
+
+.bloque-ji-section-divider.is-curve.from-light.to-primary {
+    background: var(--ji-color-white);
+}
+
+.bloque-ji-section-divider.is-curve.from-primary.to-light {
+    background-color: var(--ji-color-primary);
+    background-image: var(--ji-pattern-mesh);
+}
+
+.bloque-ji-section-divider.is-space.from-light.to-primary {
+    background-color: var(--ji-color-primary);
+    background-image:
+        linear-gradient(180deg, var(--ji-color-white) 0%, rgba(255, 255, 255, 0.84) 34%, rgba(255, 255, 255, 0) 100%),
+        var(--ji-pattern-mesh);
+}
+
+.bloque-ji-section-divider.is-space.from-primary.to-light {
+    background-color: var(--ji-color-primary);
+    background-image:
+        linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.86) 70%, var(--ji-color-white) 100%),
+        var(--ji-pattern-mesh);
+}
+
+.bloque-ji-section-divider.is-space.from-light.to-light {
+    background: var(--ji-color-white);
+}
+
+.bloque-ji-section-divider.is-space.from-primary.to-primary {
+    background-color: var(--ji-color-primary);
+    background-image: var(--ji-pattern-mesh);
+}
+
+.bloque-ji-section-divider-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.bloque-ji-section-divider.is-space .bloque-ji-section-divider-inner {
+    background: transparent;
+    background-image: none;
+}
+
+.bloque-ji-section-divider.is-space .bloque-ji-section-divider-inner::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 160px;
+    height: 2px;
+    transform: translate(-50%, -50%);
+    background: rgba(var(--ji-color-primary-rgb), 0.1);
+    opacity: 0;
+}
+
+.bloque-ji-section-divider.is-space.has-accent .bloque-ji-section-divider-inner::after {
+    opacity: 1;
+    background: linear-gradient(90deg, transparent, rgba(193, 154, 91, 0.72), transparent);
+}
+
+.bloque-ji-section-divider-curve {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    opacity: 0.98;
+    filter: none;
+}
+
+.bloque-ji-section-divider.from-light.to-primary .bloque-ji-section-divider-curve-base,
+.bloque-ji-section-divider.from-primary.to-primary .bloque-ji-section-divider-curve-base {
+    fill: var(--ji-color-primary);
+}
+
+.bloque-ji-section-divider.from-primary.to-light .bloque-ji-section-divider-curve-base,
+.bloque-ji-section-divider.from-light.to-light .bloque-ji-section-divider-curve-base {
+    fill: var(--ji-color-white);
+}
+
+.bloque-ji-section-divider-curve-mesh {
+    opacity: 0;
+}
+
+.bloque-ji-section-divider.from-light.to-primary .bloque-ji-section-divider-curve-mesh,
+.bloque-ji-section-divider.from-primary.to-primary .bloque-ji-section-divider-curve-mesh {
+    opacity: 1;
+}
+
+.bloque-ji-section-divider.has-accent.is-curve::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    width: 72px;
+    height: 2px;
+    transform: translateX(-50%);
+    background: var(--ji-color-accent);
+    opacity: 0.75;
+}
+
+@media (max-width: 768px) {
+    .bloque-ji-section-divider.size-small {
+        height: 24px;
+    }
+
+    .bloque-ji-section-divider.size-medium {
+        height: 40px;
+    }
+
+    .bloque-ji-section-divider.size-large {
+        height: 64px;
+    }
+
+}

@@ -158,8 +158,8 @@
     padding-left: 28px;
 }
 
-/* Enlace activo (primer enlace por defecto para fines demostrativos en el CSS) */
-.bloque-ji-navbar-list > li:first-child > .bloque-ji-navbar-link {
+/* Enlace activo: barra inferior */
+.bloque-ji-navbar-item.is-active > .bloque-ji-navbar-link {
     color: var(--ji-color-text);
     border-bottom-color: var(--ji-color-accent);
 }
