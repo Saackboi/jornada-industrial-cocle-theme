@@ -1,12 +1,12 @@
 /* Estilos para el bloque JI - Grid de Noticias */
 
 .bloque-ji-news {
-    background-color: #ffffff;
+    background-color: var(--ji-color-white);
     padding: 100px 0;
     width: 100%;
-    color: #0a192f;
+    color: var(--ji-color-text);
     box-sizing: border-box;
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: var(--ji-font-body);
 }
 
 .bloque-ji-news.alignfull {
@@ -29,7 +29,7 @@
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 56px;
-    border-bottom: 1px solid rgba(10, 25, 47, 0.08);
+    border-bottom: 1px solid var(--ji-border-light);
     padding-bottom: 24px;
 }
 
@@ -43,20 +43,20 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.3em;
-    color: #c19a5b;
+    color: var(--ji-color-accent);
     margin-bottom: 12px;
 }
 
 .bloque-ji-news-title {
-    font-family: 'Bodoni Moda', serif;
+    font-family: var(--ji-font-heading);
     font-size: 36px;
     font-weight: 700;
     margin: 0;
-    color: #0a192f;
+    color: var(--ji-color-text);
 }
 
 .bloque-ji-news-more-link {
-    color: #c19a5b;
+    color: var(--ji-color-accent);
     text-decoration: none;
     font-size: 13px;
     font-weight: 700;
@@ -74,7 +74,7 @@
 }
 
 .bloque-ji-news-more-link:hover {
-    color: #0a192f;
+    color: var(--ji-color-text);
 }
 
 .bloque-ji-news-more-link:hover span.material-symbols-outlined {
@@ -92,14 +92,14 @@
 .bloque-ji-news-main-card {
     display: flex;
     flex-direction: column;
-    background-color: #f8fafc;
+    background-color: var(--ji-bg-light);
     border: 1px solid rgba(10, 25, 47, 0.06);
     transition: all 0.3s ease;
 }
 
 .bloque-ji-news-main-card:hover {
     border-color: rgba(193, 154, 91, 0.35);
-    background-color: #f1f5f9;
+    background-color: var(--ji-bg-light-hover);
 }
 
 .bloque-ji-news-main-img-wrapper {
@@ -134,14 +134,14 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: #c19a5b;
+    color: var(--ji-color-accent);
     border: 1px solid rgba(193, 154, 91, 0.3);
     padding: 4px 12px;
     margin-bottom: 20px;
 }
 
 .bloque-ji-news-main-title-text {
-    font-family: 'Bodoni Moda', serif;
+    font-family: var(--ji-font-heading);
     font-size: 28px;
     font-weight: 700;
     margin: 0 0 16px 0;
@@ -149,25 +149,25 @@
 }
 
 .bloque-ji-news-main-title-text a {
-    color: #0a192f;
+    color: var(--ji-color-text);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .bloque-ji-news-main-title-text a:hover {
-    color: #c19a5b;
+    color: var(--ji-color-accent);
 }
 
 .bloque-ji-news-main-desc-text {
     font-size: 15px;
     line-height: 1.6;
-    color: rgba(10, 25, 47, 0.7);
+    color: var(--ji-color-text-muted);
     margin: 0 0 32px 0;
 }
 
 .bloque-ji-news-read-more {
     margin-top: auto;
-    color: #0a192f;
+    color: var(--ji-color-text);
     text-decoration: none;
     font-size: 12px;
     font-weight: 700;
@@ -184,7 +184,7 @@
 }
 
 .bloque-ji-news-read-more:hover {
-    color: #c19a5b;
+    color: var(--ji-color-accent);
 }
 
 .bloque-ji-news-read-more:hover span.material-symbols-outlined {
@@ -201,7 +201,7 @@
 .bloque-ji-news-sidebar-card {
     display: flex;
     gap: 24px;
-    background-color: #f8fafc;
+    background-color: var(--ji-bg-light);
     border: 1px solid rgba(10, 25, 47, 0.06);
     padding: 20px;
     transition: all 0.3s ease;
@@ -209,7 +209,7 @@
 
 .bloque-ji-news-sidebar-card:hover {
     border-color: rgba(193, 154, 91, 0.35);
-    background-color: #f1f5f9;
+    background-color: var(--ji-bg-light-hover);
 }
 
 .bloque-ji-news-sidebar-img-wrapper {
@@ -237,7 +237,7 @@
 }
 
 .bloque-ji-news-sidebar-title-text {
-    font-family: 'Bodoni Moda', serif;
+    font-family: var(--ji-font-heading);
     font-size: 18px;
     font-weight: 700;
     margin: 0 0 8px 0;
@@ -245,19 +245,19 @@
 }
 
 .bloque-ji-news-sidebar-title-text a {
-    color: #0a192f;
+    color: var(--ji-color-text);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .bloque-ji-news-sidebar-title-text a:hover {
-    color: #c19a5b;
+    color: var(--ji-color-accent);
 }
 
 .bloque-ji-news-sidebar-desc-text {
     font-size: 13px;
     line-height: 1.5;
-    color: rgba(10, 25, 47, 0.6);
+    color: var(--ji-color-text-muted-soft);
     margin: 0;
 }
 

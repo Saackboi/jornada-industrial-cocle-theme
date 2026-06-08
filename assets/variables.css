@@ -1,0 +1,27 @@
+:root {
+  --ji-color-primary: #0a192f;
+  --ji-color-primary-rgb: 10, 25, 47;
+  --ji-color-accent: #c19a5b;
+  --ji-color-accent-light: #e6c587;
+  --ji-color-white: #ffffff;
+
+  --ji-color-text: #0a192f;
+  --ji-color-text-muted: rgba(10, 25, 47, 0.7);
+  --ji-color-text-muted-soft: rgba(10, 25, 47, 0.6);
+  --ji-color-text-on-dark: #ffffff;
+  --ji-color-text-on-dark-muted: rgba(255, 255, 255, 0.6);
+
+  --ji-bg-light: #f8fafc;
+  --ji-bg-light-hover: #f1f5f9;
+  --ji-bg-dark-accent: rgba(255, 255, 255, 0.05);
+
+  --ji-border-light: rgba(10, 25, 47, 0.08);
+  --ji-border-dark: rgba(255, 255, 255, 0.08);
+
+  --ji-font-heading: 'Bodoni Moda', serif;
+  --ji-font-body: 'Hanken Grotesk', sans-serif;
+
+  --ji-pattern-mesh:
+    repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(0,0,0,0.04) 12px, rgba(0,0,0,0.04) 13px),
+    repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(0,0,0,0.04) 12px, rgba(0,0,0,0.04) 13px);
+}
