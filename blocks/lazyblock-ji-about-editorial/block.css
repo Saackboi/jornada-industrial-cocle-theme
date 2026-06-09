@@ -1,0 +1,566 @@
+/* ═══════════════════════════════════════════════════════════════════
+   JI About Editorial — Premium Magazine Layout
+   Fondo blanco | Tipografía editorial | Micro-animaciones
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Root Section ──────────────────────────────────────────────── */
+.ji-editorial {
+    background-color: var(--ji-color-white);
+    font-family: var(--ji-font-body);
+    color: var(--ji-color-primary);
+    overflow: hidden;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BLOQUE 1 — Intro Split Screen (¿Qué somos?)
+   ═══════════════════════════════════════════════════════════ */
+.ji-editorial__intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 90vh;
+}
+
+/* ── Text Panel (left) ─────────────────────────────────────── */
+.ji-editorial__intro-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10rem 5rem 10rem 8%;
+    background: var(--ji-color-white);
+    position: relative;
+}
+
+.ji-editorial__intro-text::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    height: 70%;
+    background: linear-gradient(to bottom, transparent, var(--ji-color-primary), transparent);
+    opacity: 0.1;
+}
+
+/* Label / overline */
+.ji-editorial__label {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ji-color-accent);
+    margin-bottom: 2.5rem;
+}
+
+.ji-editorial__label-line {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--ji-color-accent);
+    flex-shrink: 0;
+}
+
+/* Main heading */
+.ji-editorial__intro-heading {
+    font-family: var(--ji-font-heading);
+    font-size: clamp(4rem, 7vw, 8rem);
+    line-height: 0.9;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin: 0 0 3rem 0;
+    color: var(--ji-color-primary);
+}
+
+.ji-editorial__intro-em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ji-color-accent);
+    display: block;
+}
+
+/* Body text */
+.ji-editorial__intro-body {
+    max-width: 520px;
+}
+
+.ji-editorial__intro-body p {
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--ji-color-text-muted);
+    margin: 0 0 1.2em 0;
+}
+
+.ji-editorial__intro-body p:first-of-type::first-letter {
+    float: left;
+    font-family: var(--ji-font-heading);
+    font-size: 5.5rem;
+    line-height: 0.75;
+    padding: 8px 16px 0 0;
+    color: var(--ji-color-accent);
+    font-weight: 800;
+}
+
+/* ── Visual Panel (right) ──────────────────────────────────── */
+.ji-editorial__intro-visual {
+    position: relative;
+    background: var(--ji-color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 6rem 4rem;
+}
+
+/* Scattered dots decoration */
+.ji-editorial__dots-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle, rgba(193, 154, 91, 0.35) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* Morphing shape frame */
+.ji-editorial__morph-frame {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 4/5;
+    z-index: 2;
+}
+
+.ji-editorial__morph-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 60% 40% 55% 45% / 50% 60% 40% 55%;
+    background: radial-gradient(circle, rgba(193, 154, 91, 0.3) 0%, transparent 70%);
+    filter: blur(30px);
+    animation: editorialMorph 12s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+.ji-editorial__morph-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 55% 45% 40% 60% / 45% 55% 45% 55%;
+    animation: editorialMorph 12s ease-in-out infinite alternate;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.ji-editorial__intro-visual:hover .ji-editorial__morph-img {
+    transform: scale(1.04);
+}
+
+
+
+
+/* ═══════════════════════════════════════════════════════════
+   BLOQUE 2 — Misión & Visión: Bold Editorial Layout
+   ═══════════════════════════════════════════════════════════ */
+.ji-editorial__mv-section {
+    background: var(--ji-color-white);
+    padding: 0 0 10rem;
+    position: relative;
+}
+
+/* ── Scrolling Marquee Header ──────────────────────────────── */
+.ji-editorial__mv-header {
+    overflow: hidden;
+    border-top: 1px solid var(--ji-border-light);
+    border-bottom: 1px solid var(--ji-border-light);
+    padding: 1.2rem 0;
+    margin-bottom: 8rem;
+    background: var(--ji-bg-light);
+}
+
+.ji-editorial__mv-marquee {
+    display: flex;
+    white-space: nowrap;
+    animation: marqueeScroll 18s linear infinite;
+}
+
+.ji-editorial__mv-marquee span {
+    font-family: var(--ji-font-heading);
+    font-size: 1.05rem;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.08em;
+    color: var(--ji-color-text-muted);
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* ── MV Cards Grid ─────────────────────────────────────────── */
+.ji-editorial__mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+/* ── Individual MV Card ────────────────────────────────────── */
+.ji-mv-card {
+    position: relative;
+    background: var(--ji-color-white);
+    border: 1px solid var(--ji-border-light);
+    border-radius: 28px;
+    overflow: hidden;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 580px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ji-mv-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 40px 80px rgba(10, 25, 47, 0.1),
+                0 10px 20px rgba(10, 25, 47, 0.05);
+    z-index: 2;
+}
+
+/* Colored top accent bar */
+.ji-mv-card__accent-bar {
+    height: 5px;
+    background: linear-gradient(90deg, var(--ji-color-accent), var(--ji-color-accent-light));
+    width: 0;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.ji-mv-card:hover .ji-mv-card__accent-bar {
+    width: 100%;
+}
+
+/* Card inner layout */
+.ji-mv-card__inner {
+    padding: 4rem 3.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    z-index: 2;
+}
+
+/* Meta row: icon + tag */
+.ji-mv-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.ji-mv-card__icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(193, 154, 91, 0.12), rgba(193, 154, 91, 0.04));
+    border: 1px solid rgba(193, 154, 91, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ji-color-accent);
+    flex-shrink: 0;
+    transition: background 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease;
+}
+
+.ji-mv-card__icon svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 1.5px;
+}
+
+.ji-mv-card:hover .ji-mv-card__icon {
+    background: var(--ji-color-accent);
+    color: var(--ji-color-white);
+    border-color: var(--ji-color-accent);
+    transform: rotate(8deg) scale(1.1);
+}
+
+.ji-mv-card__tag {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ji-color-accent);
+}
+
+/* Title */
+.ji-mv-card__title {
+    font-family: var(--ji-font-heading);
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin: 0 0 2rem 0;
+    color: var(--ji-color-primary);
+}
+
+/* Text */
+.ji-mv-card__text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--ji-color-text-muted);
+    margin: 0;
+    flex: 1;
+}
+
+/* Footer row with expanding line */
+.ji-mv-card__footer {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--ji-border-light);
+}
+
+.ji-mv-card__line {
+    height: 2px;
+    width: 0;
+    background: var(--ji-color-accent);
+    transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    flex-shrink: 0;
+}
+
+.ji-mv-card:hover .ji-mv-card__line {
+    width: 60px;
+}
+
+.ji-mv-card__cta-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ji-color-text-muted);
+    transition: color 0.4s ease;
+}
+
+.ji-mv-card:hover .ji-mv-card__cta-text {
+    color: var(--ji-color-accent);
+}
+
+/* Giant background number */
+.ji-mv-card__bg-num {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 1.5rem;
+    font-family: var(--ji-font-heading);
+    font-size: 14rem;
+    font-weight: 900;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(10, 25, 47, 0.055);
+    pointer-events: none;
+    z-index: 1;
+    transition: -webkit-text-stroke 0.5s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    user-select: none;
+}
+
+.ji-mv-card:hover .ji-mv-card__bg-num {
+    -webkit-text-stroke: 1.5px rgba(193, 154, 91, 0.3);
+    transform: scale(1.06) rotate(-3deg);
+}
+
+/* ── Image Strip (Misión card only) ──────────────────────── */
+.ji-mv-card__img-strip {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 45%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 24px 0 28px 0;
+    z-index: 0;
+}
+
+.ji-mv-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.12;
+    transition: opacity 0.6s ease, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ji-mv-card:hover .ji-mv-card__img {
+    opacity: 0.2;
+    transform: scale(1.08);
+}
+
+.ji-mv-card__img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--ji-color-white) 30%, transparent 100%);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   KEYFRAMES
+   ═══════════════════════════════════════════════════════════ */
+@keyframes editorialMorph {
+    0%   { border-radius: 55% 45% 40% 60% / 45% 55% 45% 55%; }
+    33%  { border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%; }
+    66%  { border-radius: 60% 40% 30% 70% / 55% 45% 55% 45%; }
+    100% { border-radius: 55% 45% 40% 60% / 45% 55% 45% 55%; }
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+}
+
+@keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+
+/* Tablet ─────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+    .ji-editorial__intro {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .ji-editorial__intro-text {
+        padding: 8rem 6% 6rem;
+        align-items: flex-start;
+    }
+
+    .ji-editorial__intro-text::before {
+        display: none;
+    }
+
+    .ji-editorial__intro-visual {
+        min-height: 60vw;
+        max-height: 80vw;
+        padding: 4rem 6%;
+    }
+
+    .ji-editorial__morph-frame {
+        max-width: 360px;
+    }
+
+    .ji-editorial__mv-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 5%;
+    }
+
+    .ji-mv-card {
+        min-height: auto;
+    }
+
+    .ji-editorial__mv-header {
+        margin-bottom: 5rem;
+    }
+}
+
+/* Mobile ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .ji-editorial__intro-text {
+        padding: 7rem 5% 4rem;
+    }
+
+    .ji-editorial__intro-heading {
+        font-size: clamp(3rem, 10vw, 5rem);
+    }
+
+    .ji-editorial__intro-body p:first-of-type::first-letter {
+        float: none;
+        font-size: inherit;
+        line-height: inherit;
+        padding: 0;
+        color: inherit;
+        font-weight: inherit;
+    }
+
+    .ji-editorial__intro-visual {
+        min-height: 90vw;
+    }
+
+    .ji-editorial__morph-frame {
+        max-width: 300px;
+    }
+
+    .ji-editorial__morph-badge {
+        padding: 1rem 1.4rem;
+        bottom: -1rem;
+        left: -0.5rem;
+        border-radius: 14px;
+    }
+
+    .ji-editorial__morph-badge-year {
+        font-size: 1.2rem;
+    }
+
+    .ji-mv-card__inner {
+        padding: 3rem 2rem 2.5rem;
+    }
+
+    .ji-mv-card__title {
+        font-size: clamp(2.2rem, 7vw, 3rem);
+    }
+
+    .ji-mv-card__bg-num {
+        font-size: 9rem;
+    }
+
+    .ji-mv-card__img-strip {
+        height: 160px;
+        width: 50%;
+    }
+
+    .ji-editorial__mv-section {
+        padding-bottom: 6rem;
+    }
+}
+
+/* Small Mobile ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .ji-editorial__intro-text {
+        padding: 5rem 4% 3rem;
+    }
+
+    .ji-mv-card__inner {
+        padding: 2.5rem 1.5rem 2rem;
+    }
+
+    .ji-mv-card__title {
+        font-size: 2rem;
+    }
+
+    .ji-mv-card__bg-num {
+        font-size: 7rem;
+        bottom: -1rem;
+    }
+
+    .ji-mv-card__img-strip {
+        display: none;
+    }
+
+    .ji-editorial__morph-frame {
+        max-width: 260px;
+    }
+}
