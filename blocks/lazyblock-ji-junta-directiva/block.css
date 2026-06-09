@@ -79,17 +79,14 @@
 
 /* ── Grid de Tarjetas ─────────────────────────────────────────────────── */
 .ji-junta__grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    justify-content: center;
-    max-width: 1100px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
 .ji-junta__card {
-    flex: 1 1 280px;
-    max-width: 340px;
     position: relative;
     background: var(--ji-color-white);
     border: 1px solid var(--ji-border-light);
@@ -143,7 +140,7 @@
 /* ── Avatar con animación ─────────────────────────────────────────────── */
 .ji-junta__avatar-wrap {
     position: relative;
-    width: 140px; height: 140px;
+    width: 200px; height: 200px;
     margin: 0 auto 1.5rem;
 }
 
@@ -201,6 +198,16 @@
 
 .ji-junta__career strong { color: var(--ji-color-primary); }
 
+@media (max-width: 900px) {
+    .ji-junta__grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+}
+
 @media (max-width: 600px) {
-    .ji-junta__card { max-width: 100%; }
+    .ji-junta__avatar-wrap {
+        width: 160px;
+        height: 160px;
+    }
 }
