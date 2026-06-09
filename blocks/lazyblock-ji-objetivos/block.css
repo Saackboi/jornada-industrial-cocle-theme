@@ -1,0 +1,132 @@
+.ji-objetivos {
+    background-color: var(--ji-color-primary);
+    padding: 8rem 2rem 12rem;
+    font-family: var(--ji-font-body);
+    position: relative;
+    overflow: visible; /* Required for sticky to work */
+}
+
+.ji-objetivos__header {
+    text-align: center;
+    margin-bottom: 6rem;
+    position: sticky;
+    top: 5rem;
+    z-index: 10;
+}
+
+.ji-objetivos__main-title {
+    font-family: var(--ji-font-heading);
+    font-size: clamp(3rem, 5vw, 5rem);
+    color: var(--ji-color-white);
+    font-weight: 800;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* ── Sticky Stack Layout ───────────────────────────────── */
+.ji-objetivos__grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-bottom: 5rem;
+}
+
+.ji-objetivos__card {
+    position: sticky;
+    top: 15vh; /* Each card stops here */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 40px;
+    padding: 4rem;
+    margin-bottom: 5rem; /* Space before next card comes up */
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    box-shadow: 0 -20px 60px rgba(0,0,0,0.2), 0 30px 60px rgba(0,0,0,0.5);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+    min-height: 400px;
+}
+
+.ji-objetivos__card:hover {
+    border-color: rgba(193, 154, 91, 0.4);
+}
+
+/* We offset the top of each subsequent card slightly so they look like a stacked deck */
+.ji-objetivos__card:nth-child(1) { top: 15vh; z-index: 1; }
+.ji-objetivos__card:nth-child(2) { top: 17vh; z-index: 2; background: rgba(255, 255, 255, 0.05); }
+.ji-objetivos__card:nth-child(3) { top: 19vh; z-index: 3; background: rgba(255, 255, 255, 0.07); }
+.ji-objetivos__card:nth-child(4) { top: 21vh; z-index: 4; background: rgba(255, 255, 255, 0.09); }
+.ji-objetivos__card:nth-child(5) { top: 23vh; z-index: 5; background: rgba(255, 255, 255, 0.11); }
+
+/* Big background number */
+.ji-objetivos__card-bg-number {
+    font-size: 14rem;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(193, 154, 91, 0.3);
+    line-height: 0.8;
+    font-family: var(--ji-font-heading);
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+}
+
+.ji-objetivos__card:hover .ji-objetivos__card-bg-number {
+    -webkit-text-stroke: 2px var(--ji-color-accent);
+    transform: scale(1.05) rotate(-5deg);
+}
+
+/* Content */
+.ji-objetivos__card-content {
+    flex-grow: 1;
+}
+
+.ji-objetivos__card-index {
+    display: none; /* Hide the small index, the big one is enough */
+}
+
+.ji-objetivos__card-title {
+    font-family: var(--ji-font-heading);
+    font-size: 2.5rem;
+    color: var(--ji-color-white);
+    font-weight: 800;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.1;
+}
+
+.ji-objetivos__card-desc {
+    color: var(--ji-color-text-on-dark-muted);
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 992px) {
+    .ji-objetivos__card {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 3rem 2rem;
+    }
+    .ji-objetivos__card-bg-number {
+        font-size: 8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .ji-objetivos {
+        padding: 6rem 1rem 8rem;
+    }
+    .ji-objetivos__main-title {
+        font-size: 2.5rem;
+    }
+    .ji-objetivos__card-title {
+        font-size: 2rem;
+    }
+    .ji-objetivos__card-desc {
+        font-size: 1.1rem;
+    }
+}
