@@ -86,7 +86,6 @@ if ( ! empty( $title ) ) {
                     </div>
 
                     <div class="ji-com-acc__expanded-content">
-                        <div class="ji-com-acc__icon"><?php echo esc_html($c_icon); ?></div>
                         <div class="ji-com-acc__info">
                             <h3 class="ji-com-acc__name"><?php echo esc_html($c_name); ?></h3>
                             <div class="ji-com-acc__leader-box">
