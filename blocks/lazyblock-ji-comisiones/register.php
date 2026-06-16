@@ -30,7 +30,6 @@ function jornada_industrial_register_block_ji_comisiones() {
                 'control_com_label' => array( 'type' => 'text', 'name' => 'section_label', 'label' => 'Etiqueta Superior', 'placement' => 'inspector', 'default' => '✦ Estructura Interna' ),
                 'control_com_title' => array( 'type' => 'text', 'name' => 'section_title', 'label' => 'Título de la Sección', 'placement' => 'inspector', 'default' => 'Comisiones Especializadas' ),
                 'control_comisiones' => array( 'type' => 'repeater', 'name' => 'commissions', 'label' => 'Comisiones', 'placement' => 'inspector' ),
-                'control_comisiones_icon' => array( 'type' => 'text', 'name' => 'icon', 'label' => 'Icono (Emoji)', 'child_of' => 'control_comisiones', 'default' => '📁' ),
                 'control_comisiones_name' => array( 'type' => 'text', 'name' => 'name', 'label' => 'Nombre', 'child_of' => 'control_comisiones' ),
                 'control_comisiones_leader' => array( 'type' => 'text', 'name' => 'leader', 'label' => 'Líder', 'child_of' => 'control_comisiones' ),
                 'control_comisiones_photo' => array( 'type' => 'image', 'name' => 'photo', 'label' => 'Foto de la Comisión', 'child_of' => 'control_comisiones' ),

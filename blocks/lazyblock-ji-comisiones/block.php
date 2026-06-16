@@ -62,7 +62,6 @@ if ( ! empty( $title ) ) {
             $i = 0;
             foreach ( $commissions as $com ) : 
                 $i++;
-                $c_icon = isset($com['icon']) && !empty($com['icon']) ? $com['icon'] : '📁';
                 $c_name = isset($com['name']) ? $com['name'] : '';
                 $c_leader = isset($com['leader']) ? $com['leader'] : '';
                 
