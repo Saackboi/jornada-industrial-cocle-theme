@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 /* ── Background Elements ─────────────────────────────────────────────── */
@@ -62,6 +63,7 @@
     padding: 0 2rem;
     position: relative;
     z-index: 2;
+    box-sizing: border-box;
 }
 
 .ji-com-creative__header {
@@ -89,13 +91,17 @@
     font-size: clamp(2.5rem, 5vw, 4rem);
     color: var(--ji-color-primary);
     font-weight: 800;
-    margin: 0 0 1rem;
+    margin: 0 auto 1rem !important;
     line-height: 1.2;
     letter-spacing: -0.02em;
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
 }
 
 .ji-com-creative__title-accent {
     color: var(--ji-color-accent);
+    display: inline !important;
 }
 
 .ji-com-creative__subtitle {
@@ -108,36 +114,49 @@
 /* ── The Flex Accordion ──────────────────────────────────────────────── */
 .ji-com-acc {
     display: flex;
+    justify-content: center;
     gap: 1.2rem;
     height: 65vh;
     min-height: 500px;
     max-height: 800px;
+    width: max-content;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .ji-com-acc__item {
     position: relative;
-    flex: 1;
+    flex: 0 1 auto;
+    width: auto;
+    max-width: 110px;
     border-radius: 40px;
     overflow: hidden;
     cursor: pointer;
-    transition: flex 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: max-width 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
     box-shadow: 0 10px 40px rgba(0,0,0,0.4);
     border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ji-com-acc__item.is-active {
-    flex: 6;
+    flex: 1 1 auto;
+    max-width: 1000px;
     border-color: rgba(240,180,41,0.3);
     box-shadow: 0 20px 60px rgba(240,180,41,0.15);
 }
 
 /* Background Image */
 .ji-com-acc__bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
+    position: relative;
     height: 100%;
+    width: auto;
+    flex: 0 0 auto;
+    pointer-events: none;
     object-fit: cover;
+    object-position: center 25%; /* Keeps faces visible */
     filter: brightness(0.7);
     transition: filter 0.8s ease, transform 0.8s ease;
 }
@@ -211,33 +230,7 @@
     pointer-events: auto;
 }
 
-.ji-com-acc__icon {
-    width: 80px; height: 80px;
-    flex-shrink: 0;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 24px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    position: relative;
-    overflow: hidden;
-}
 
-.ji-com-acc__icon::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.4s;
-}
-
-.ji-com-acc__item:hover .ji-com-acc__icon::before {
-    opacity: 1;
-}
 
 .ji-com-acc__info {
     flex-grow: 1;
@@ -291,11 +284,6 @@
         padding: 2rem;
         gap: 1rem;
     }
-    .ji-com-acc__icon {
-        width: 60px; height: 60px;
-        font-size: 1.6rem;
-        border-radius: 16px;
-    }
     .ji-com-acc__name {
         font-size: clamp(1.4rem, 2vw, 2rem);
         margin: 0 0 0.8rem;
@@ -324,38 +312,54 @@
         min-height: unset;
         max-height: none;
         gap: 1rem;
+        width: 100% !important;
+        max-width: 100% !important;
     }
     .ji-com-acc__item {
         border-radius: 20px;
         flex: none;
-        height: 80px; /* Fixed height for inactive items */
+        height: 90px; /* Predictable height for active item */
+        width: 100% !important;
+        max-width: none !important;
+        display: block !important;
     }
     .ji-com-acc__item.is-active {
         flex: none;
         height: 400px; /* Predictable height for active item */
+        width: 100% !important;
+        max-width: none !important;
+    }
+    .ji-com-acc__bg {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
     }
     .ji-com-acc__collapsed-title {
         bottom: auto;
-        left: 2rem;
+        left: 1.5rem;
+        right: 1.5rem; /* Allow constraint on right side */
         top: 50%;
         transform: translateY(-50%);
+        justify-content: flex-start;
     }
     .ji-com-acc__collapsed-title span {
         writing-mode: horizontal-tb;
         transform: none;
-        font-size: 1.2rem;
-        letter-spacing: 0.1em;
+        font-size: 1.15rem;
+        letter-spacing: 0.05em;
+        /* Allow text to truncate gracefully if too long */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
     .ji-com-acc__expanded-content {
         padding: 1.5rem;
         flex-direction: column;
         align-items: flex-start;
         gap: 0; /* Removing gap to use margin for safety */
-    }
-    .ji-com-acc__icon {
-        margin-bottom: 1rem; /* Fallback for flex gap */
-        width: 50px; height: 50px;
-        font-size: 1.4rem;
     }
     .ji-com-acc__name {
         font-size: 1.6rem;
@@ -374,5 +378,11 @@
         margin-right: 0;
         margin-bottom: 0.4rem;
         padding-right: 0;
+    }
+}
+
+@media (max-width: 1366px) and (min-width: 1025px) {
+    .ji-com-acc__item {
+        max-width: 90px;
     }
 }
