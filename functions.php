@@ -15,17 +15,53 @@ add_action( 'after_setup_theme', 'jornada_industrial_setup' );
  * Encolar fuentes de Google y Material Icons para frontend y editor.
  */
 add_action( 'enqueue_block_assets', 'jornada_industrial_enqueue_global_assets' );
+add_action( 'wp_enqueue_scripts', 'jornada_industrial_enqueue_global_assets' );
 function jornada_industrial_enqueue_global_assets() {
+    static $did_enqueue = false;
+    if ( $did_enqueue ) {
+        return;
+    }
+    $did_enqueue = true;
+
     wp_enqueue_style( 'material-symbols-outlined', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap', array(), null );
 
     wp_enqueue_style( 'ji-global-variables', get_template_directory_uri() . '/assets/variables.css', array(), null );
     wp_add_inline_style( 'ji-global-variables', ji_get_customizer_css() );
+
+    wp_enqueue_style(
+        'ji-template-styles',
+        get_template_directory_uri() . '/assets/templates.css',
+        array( 'ji-global-variables' ),
+        filemtime( get_template_directory() . '/assets/templates.css' )
+    );
 
     $font_pairing = get_theme_mod( 'ji_font_pairing', 'bodoni-hanken' );
     $pairings = ji_get_font_pairings();
     if ( isset( $pairings[ $font_pairing ] ) ) {
         wp_enqueue_style( 'ji-google-fonts', 'https://fonts.googleapis.com/css2?family=' . $pairings[ $font_pairing ]['google_url'] . '&display=swap', array(), null );
     }
+}
+
+/**
+ * Obtiene la URL del listado de noticias.
+ */
+function ji_get_news_archive_url() {
+    $cat = get_category_by_slug( 'noticias' );
+    if ( $cat ) {
+        return get_category_link( $cat->term_id );
+    }
+
+    $cat_actualidad = get_category_by_slug( 'actualidad' );
+    if ( $cat_actualidad ) {
+        return get_category_link( $cat_actualidad->term_id );
+    }
+
+    $blog_page_id = get_option( 'page_for_posts' );
+    if ( $blog_page_id ) {
+        return get_permalink( $blog_page_id );
+    }
+
+    return home_url( '/' );
 }
 
 /**

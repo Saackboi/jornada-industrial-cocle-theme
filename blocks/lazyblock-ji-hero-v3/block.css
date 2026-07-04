@@ -125,6 +125,8 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--ji-border-dark);
+    border-radius: 16px;
+    overflow: hidden;
     padding: 32px;
     box-sizing: border-box;
     transition: all 0.3s ease;
