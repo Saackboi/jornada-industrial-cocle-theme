@@ -4,7 +4,7 @@ body {
     background-color: var(--ji-color-white);
     color: var(--ji-color-text);
     font-family: var(--ji-font-body);
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 .ji-template-main {

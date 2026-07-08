@@ -19,7 +19,7 @@
             background-color: #ffffff;
             color: #000000;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            overflow-x: hidden;
+            overflow-x: clip;
         }
         .site-main {
             width: 100%;
