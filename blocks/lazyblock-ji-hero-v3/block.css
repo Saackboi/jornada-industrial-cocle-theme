@@ -79,7 +79,7 @@
 /* Typography styling */
 .bloque-ji-hero-v3-overline {
     display: block;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.3em;
@@ -122,8 +122,8 @@
 
 .bloque-ji-hero-v3-card {
     background: var(--ji-bg-dark-accent);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border: 1px solid var(--ji-border-dark);
     border-radius: 16px;
     overflow: hidden;

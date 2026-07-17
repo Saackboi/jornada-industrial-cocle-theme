@@ -65,7 +65,7 @@ if ( ! empty( $title ) ) {
         ?>
             <div class="<?php echo esc_attr($card_class); ?>">
                 <?php if ($is_feat) : ?>
-                    <span class="ji-junta__badge">★ <?php echo esc_html($m_role); ?></span>
+                    <span class="ji-junta__badge"><?php echo esc_html($m_role); ?></span>
                 <?php endif; ?>
                 <div class="ji-junta__avatar-wrap">
                     <div class="ji-junta__avatar-ring" style="animation-delay: -<?php echo $idx * 2; ?>s;"></div>
