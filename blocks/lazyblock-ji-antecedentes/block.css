@@ -4,11 +4,35 @@
     position: relative;
     padding: 100px 24px;
     background: var(--ji-color-white);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--ji-color-text);
     font-family: var(--ji-font-body);
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
+}
+
+/* ── Overlay oscuro cuando hay imagen de fondo ────────────────────────────*/
+.ji-ant__bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 25, 47, 0.72);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Cuando hay imagen de fondo, el texto del header pasa a blanco */
+.ji-ant.has-bg-image .ji-ant__label,
+.ji-ant.has-bg-image .ji-ant__title,
+.ji-ant.has-bg-image .ji-ant__title-accent,
+.ji-ant.has-bg-image .ji-ant__subtitle {
+    color: #ffffff;
+}
+
+.ji-ant.has-bg-image .ji-ant__title-accent {
+    color: var(--ji-color-accent-light);
 }
 
 .ji-ant__bg-mesh {

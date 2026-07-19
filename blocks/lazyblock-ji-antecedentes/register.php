@@ -29,7 +29,19 @@ function jornada_industrial_register_block_ji_antecedentes() {
             ),
             'controls' => array(
 
+                // ── Imagen de Fondo de la Sección ────────────────────────────────────
+                'control_ant_bg_image' => array(
+                    'type'         => 'image',
+                    'name'         => 'bg_image',
+                    'label'        => 'Imagen de Fondo',
+                    'help'         => 'Imagen que se mostrará como fondo de toda la sección.',
+                    'placement'    => 'inspector',
+                    'default'      => '',
+                    'preview_size' => 'medium',
+                ),
+
                 // ── Sección Header ──────────────────────────────────────────
+
                 'control_ant_label' => array(
                     'type'      => 'text',
                     'name'      => 'section_label',

@@ -30,6 +30,15 @@ $label    = isset( $attributes['section_label'] )    ? $attributes['section_labe
 $title    = isset( $attributes['section_title'] )    ? $attributes['section_title']    : 'Ediciones Anteriores';
 $subtitle = isset( $attributes['section_subtitle'] ) ? $attributes['section_subtitle'] : 'Revive la historia y el impacto de las ediciones pasadas de la Jornada Industrial.';
 
+// ── Imagen de fondo ────────────────────────────────────────────────────────
+$bg_image_data = isset( $attributes['bg_image'] ) ? $attributes['bg_image'] : '';
+$bg_image_url  = ji_ant_get_image_url( $bg_image_data );
+$section_style = '';
+$has_bg        = ! empty( $bg_image_url );
+if ( $has_bg ) {
+    $section_style = ' style="background-image: url(\'' . esc_url( $bg_image_url ) . '\');"';
+}
+
 // ── Ediciones (repeater) ───────────────────────────────────────────────────
 $editions_raw = isset( $attributes['editions'] ) ? $attributes['editions'] : array();
 $user_editions = array();
@@ -114,8 +123,9 @@ if ( ! empty( $title ) ) {
 $block_id = 'ji-ant-' . substr( md5( microtime() . get_the_ID() ), 0, 8 );
 ?>
 
-<section class="ji-ant" id="<?php echo esc_attr( $block_id ); ?>">
+<section class="ji-ant <?php echo $has_bg ? 'has-bg-image' : ''; ?>" id="<?php echo esc_attr( $block_id ); ?>"<?php echo $section_style; ?>>
     <div class="ji-ant__bg-mesh"></div>
+    <?php if ( $has_bg ) : ?><div class="ji-ant__bg-overlay"></div><?php endif; ?>
 
     <div class="ji-ant__container">
 
