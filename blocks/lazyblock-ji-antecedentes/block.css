@@ -1,46 +1,64 @@
 /* Estilos para el bloque JI - Antecedentes */
 
+/* Wrapper principal — sin padding ni bg, solo contenedor */
 .ji-ant {
     position: relative;
-    padding: 100px 24px;
-    background: var(--ji-color-white);
+    font-family: var(--ji-font-body);
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* ── Hero (área con imagen de fondo) ─────────────────────────────────────*/
+.ji-ant__hero {
+    position: relative;
+    padding: 100px 24px 80px;
+    background: var(--ji-color-primary); /* Fallback color sin imagen */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: var(--ji-color-text);
-    font-family: var(--ji-font-body);
     overflow: hidden;
-    width: 100%;
-    box-sizing: border-box;
 }
 
-/* ── Overlay oscuro cuando hay imagen de fondo ────────────────────────────*/
+/* Overlay oscuro sobre la imagen de fondo */
 .ji-ant__bg-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(10, 25, 47, 0.72);
+    background: rgba(10, 25, 47, 0.68);
     z-index: 1;
     pointer-events: none;
 }
 
-/* Cuando hay imagen de fondo, el texto del header pasa a blanco */
-.ji-ant.has-bg-image .ji-ant__label,
-.ji-ant.has-bg-image .ji-ant__title,
-.ji-ant.has-bg-image .ji-ant__title-accent,
-.ji-ant.has-bg-image .ji-ant__subtitle {
-    color: #ffffff;
+/* Contenido interno del hero (por encima del overlay) */
+.ji-ant__hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.ji-ant.has-bg-image .ji-ant__title-accent {
+/* Texto del hero siempre en blanco (hay imagen o color oscuro de fondo) */
+.ji-ant__hero .ji-ant__label {
     color: var(--ji-color-accent-light);
 }
 
-.ji-ant__bg-mesh {
-    position: absolute;
-    inset: 0;
-    background: var(--ji-pattern-mesh);
-    opacity: 0.4;
-    pointer-events: none;
+.ji-ant__hero .ji-ant__title {
+    color: #ffffff;
+}
+
+.ji-ant__hero .ji-ant__title-accent {
+    color: var(--ji-color-accent-light);
+}
+
+.ji-ant__hero .ji-ant__subtitle {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Cuerpo blanco (tabs + contenido) ────────────────────────────────────*/
+.ji-ant__body {
+    background: var(--ji-color-white);
+    padding: 60px 24px 100px;
+    color: var(--ji-color-text);
 }
 
 .ji-ant__container {
@@ -50,11 +68,21 @@
     z-index: 2;
 }
 
-/* ── Header ─────────────────────────────────────────────────────────────── */
+/* ── Header (dentro del hero) ────────────────────────────────────────────*/
 .ji-ant__header {
     text-align: center;
     max-width: 700px;
-    margin: 0 auto 60px auto;
+    margin: 0 auto;
+}
+
+/* Separación de los bg-mesh para el hero */
+.ji-ant__bg-mesh {
+    position: absolute;
+    inset: 0;
+    background: var(--ji-pattern-mesh);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .ji-ant__label {

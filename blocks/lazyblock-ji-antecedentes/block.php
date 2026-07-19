@@ -123,22 +123,29 @@ if ( ! empty( $title ) ) {
 $block_id = 'ji-ant-' . substr( md5( microtime() . get_the_ID() ), 0, 8 );
 ?>
 
-<section class="ji-ant <?php echo $has_bg ? 'has-bg-image' : ''; ?>" id="<?php echo esc_attr( $block_id ); ?>"<?php echo $section_style; ?>>
-    <div class="ji-ant__bg-mesh"></div>
-    <?php if ( $has_bg ) : ?><div class="ji-ant__bg-overlay"></div><?php endif; ?>
+<section class="ji-ant" id="<?php echo esc_attr( $block_id ); ?>">
 
+    <!-- ── Hero con imagen de fondo ─────────────────────────────────── -->
+    <div class="ji-ant__hero <?php echo $has_bg ? 'has-bg-image' : ''; ?>"<?php echo $section_style; ?>>
+        <div class="ji-ant__bg-mesh"></div>
+        <?php if ( $has_bg ) : ?><div class="ji-ant__bg-overlay"></div><?php endif; ?>
+
+        <div class="ji-ant__hero-inner">
+            <header class="ji-ant__header">
+                <?php if ( ! empty( $label ) ) : ?>
+                    <div class="ji-ant__label"><?php echo esc_html( $label ); ?></div>
+                <?php endif; ?>
+                <h2 class="ji-ant__title"><?php echo $title_html; ?></h2>
+                <?php if ( ! empty( $subtitle ) ) : ?>
+                    <p class="ji-ant__subtitle"><?php echo esc_html( $subtitle ); ?></p>
+                <?php endif; ?>
+            </header>
+        </div>
+    </div><!-- /.ji-ant__hero -->
+
+    <!-- ── Cuerpo del bloque (fondo blanco) ─────────────────────────── -->
+    <div class="ji-ant__body">
     <div class="ji-ant__container">
-
-        <!-- Header -->
-        <header class="ji-ant__header">
-            <?php if ( ! empty( $label ) ) : ?>
-                <div class="ji-ant__label"><?php echo esc_html( $label ); ?></div>
-            <?php endif; ?>
-            <h2 class="ji-ant__title"><?php echo $title_html; ?></h2>
-            <?php if ( ! empty( $subtitle ) ) : ?>
-                <p class="ji-ant__subtitle"><?php echo esc_html( $subtitle ); ?></p>
-            <?php endif; ?>
-        </header>
 
         <!-- Tab Navigation -->
         <div class="ji-ant__tabs-nav" role="tablist">
@@ -273,6 +280,7 @@ $block_id = 'ji-ant-' . substr( md5( microtime() . get_the_ID() ), 0, 8 );
         </div><!-- /.ji-ant__tabs-content -->
 
     </div><!-- /.ji-ant__container -->
+    </div><!-- /.ji-ant__body -->
 </section>
 
 <script>
