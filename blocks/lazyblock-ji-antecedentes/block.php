@@ -21,6 +21,21 @@ if ( ! function_exists( 'ji_ant_get_image_url' ) ) {
             $src = wp_get_attachment_image_src( (int) $img_data, 'large' );
             return $src ? esc_url( $src[0] ) : '';
         }
+        if ( is_string( $img_data ) ) {
+            $img_data = trim( $img_data );
+            if ( 0 === strpos( $img_data, '%7B' ) || 0 === strpos( $img_data, '%7b' ) ) {
+                $img_data = rawurldecode( $img_data );
+            }
+            if ( 0 === strpos( $img_data, '{' ) ) {
+                $decoded = json_decode( $img_data, true );
+                if ( is_array( $decoded ) ) {
+                    return ji_ant_get_image_url( $decoded );
+                }
+            }
+            if ( 0 === strpos( $img_data, 'http' ) || 0 === strpos( $img_data, '/' ) ) {
+                return esc_url( $img_data );
+            }
+        }
         return '';
     }
 }
@@ -34,7 +49,7 @@ $subtitle = isset( $attributes['section_subtitle'] ) ? $attributes['section_subt
 $bg_image_data = isset( $attributes['bg_image'] ) ? $attributes['bg_image'] : '';
 // Usar el mismo helper que usan todos los otros heroes del tema
 $bg_image_url  = function_exists( 'ji_get_block_image_url' )
-    ? ji_get_block_image_url( $bg_image_data )
+    ? ji_get_block_image_url( $bg_image_data, get_template_directory_uri() . '/assets/images/antecedentes/iii_jornada_lanzamiento_1.jpg' )
     : ji_ant_get_image_url( $bg_image_data );
 $has_bg        = ! empty( $bg_image_url );
 
@@ -120,13 +135,21 @@ if ( ! empty( $title ) ) {
 
 // ID único para este bloque (evita conflictos si hay más de uno en la página)
 $block_id = 'ji-ant-' . substr( md5( microtime() . get_the_ID() ), 0, 8 );
+
+$block_classes = 'ji-ant';
+if ( ! empty( $attributes['align'] ) ) {
+    $block_classes .= ' align' . sanitize_html_class( $attributes['align'] );
+}
+if ( ! empty( $attributes['className'] ) ) {
+    $block_classes .= ' ' . sanitize_html_class( $attributes['className'] );
+}
 ?>
 
-<section class="ji-ant" id="<?php echo esc_attr( $block_id ); ?>">
+<section class="<?php echo esc_attr( $block_classes ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 
     <!-- ── Hero (idéntico al hero de subpáginas) ──────────────────────── -->
     <section class="ji-orgs-hero">
-        <div class="ji-orgs-hero__bg" style="background-image: url('<?php echo esc_url( $bg_image_url ); ?>');"><?php echo empty($bg_image_url) ? '' : ''; ?></div>
+        <div class="ji-orgs-hero__bg"<?php echo $has_bg ? ' style="background-image: url(' . esc_url( $bg_image_url ) . ');"' : ''; ?>></div>
         <div class="ji-orgs-hero__overlay"></div>
         <div class="ji-orgs-hero__content">
             <?php if ( ! empty( $label ) ) : ?>

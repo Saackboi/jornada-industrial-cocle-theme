@@ -103,7 +103,10 @@
     font-weight: 700;
 }
 
-.ji-ant__title-accent { color: var(--ji-color-accent); }
+.ji-ant__title-accent,
+.ji-ant__title span {
+    color: var(--ji-color-accent);
+}
 
 .ji-ant__subtitle {
     font-size: 18px;
@@ -380,8 +383,12 @@
 }
 
 @media (max-width: 768px) {
-    .ji-ant {
-        padding: 64px 16px;
+    .ji-ant__hero {
+        padding: 80px 20px 64px;
+    }
+
+    .ji-ant__body {
+        padding: 48px 16px 72px;
     }
 
     .ji-ant__tabs-nav {

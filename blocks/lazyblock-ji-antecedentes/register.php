@@ -14,6 +14,15 @@ function jornada_industrial_register_style_ji_antecedentes() {
             'path'   => get_template_directory() . '/blocks/lazyblock-ji-antecedentes/block.css',
         )
     );
+
+    wp_enqueue_block_style(
+        'lazyblock/ji-antecedentes',
+        array(
+            'handle' => 'lazyblock-ji-antecedentes-hero-subpage-style',
+            'src'    => get_template_directory_uri() . '/blocks/lazyblock-ji-hero-subpage/block.css',
+            'path'   => get_template_directory() . '/blocks/lazyblock-ji-hero-subpage/block.css',
+        )
+    );
 }
 
 add_action( 'init', 'jornada_industrial_register_block_ji_antecedentes' );
