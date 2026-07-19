@@ -32,3 +32,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Imágenes de assets — se suben directamente al WordPress de producción,
+# NO deben versionarse en Git.
+assets/images/
