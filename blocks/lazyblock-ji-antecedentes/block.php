@@ -32,12 +32,11 @@ $subtitle = isset( $attributes['section_subtitle'] ) ? $attributes['section_subt
 
 // ── Imagen de fondo ────────────────────────────────────────────────────────
 $bg_image_data = isset( $attributes['bg_image'] ) ? $attributes['bg_image'] : '';
-$bg_image_url  = ji_ant_get_image_url( $bg_image_data );
-$section_style = '';
+// Usar el mismo helper que usan todos los otros heroes del tema
+$bg_image_url  = function_exists( 'ji_get_block_image_url' )
+    ? ji_get_block_image_url( $bg_image_data )
+    : ji_ant_get_image_url( $bg_image_data );
 $has_bg        = ! empty( $bg_image_url );
-if ( $has_bg ) {
-    $section_style = ' style="background-image: url(\'' . esc_url( $bg_image_url ) . '\');"';
-}
 
 // ── Ediciones (repeater) ───────────────────────────────────────────────────
 $editions_raw = isset( $attributes['editions'] ) ? $attributes['editions'] : array();
@@ -109,13 +108,13 @@ $base_editions = array(
 // y las 3 base siempre se mantienen al final.
 $editions = array_merge( $user_editions, $base_editions );
 
-// ── Formatear título con acento en la última palabra ─────────────────────
+// ── Formatear título igual que el hero de subpáginas ─────────────────────
 $title_html = esc_html( $title );
 if ( ! empty( $title ) ) {
     $words = explode( ' ', $title );
     if ( count( $words ) > 1 ) {
         $last       = array_pop( $words );
-        $title_html = implode( ' ', $words ) . ' <span class="ji-ant__title-accent">' . esc_html( $last ) . '</span>';
+        $title_html = implode( ' ', $words ) . '<br><span>' . esc_html( $last ) . '</span>';
     }
 }
 
@@ -125,23 +124,21 @@ $block_id = 'ji-ant-' . substr( md5( microtime() . get_the_ID() ), 0, 8 );
 
 <section class="ji-ant" id="<?php echo esc_attr( $block_id ); ?>">
 
-    <!-- ── Hero con imagen de fondo ─────────────────────────────────── -->
-    <div class="ji-ant__hero <?php echo $has_bg ? 'has-bg-image' : ''; ?>"<?php echo $section_style; ?>>
-        <div class="ji-ant__bg-mesh"></div>
-        <?php if ( $has_bg ) : ?><div class="ji-ant__bg-overlay"></div><?php endif; ?>
-
-        <div class="ji-ant__hero-inner">
-            <header class="ji-ant__header">
-                <?php if ( ! empty( $label ) ) : ?>
-                    <div class="ji-ant__label"><?php echo esc_html( $label ); ?></div>
-                <?php endif; ?>
-                <h2 class="ji-ant__title"><?php echo $title_html; ?></h2>
-                <?php if ( ! empty( $subtitle ) ) : ?>
-                    <p class="ji-ant__subtitle"><?php echo esc_html( $subtitle ); ?></p>
-                <?php endif; ?>
-            </header>
+    <!-- ── Hero (idéntico al hero de subpáginas) ──────────────────────── -->
+    <section class="ji-orgs-hero">
+        <div class="ji-orgs-hero__bg" style="background-image: url('<?php echo esc_url( $bg_image_url ); ?>');"><?php echo empty($bg_image_url) ? '' : ''; ?></div>
+        <div class="ji-orgs-hero__overlay"></div>
+        <div class="ji-orgs-hero__content">
+            <?php if ( ! empty( $label ) ) : ?>
+                <div class="ji-orgs-hero__eyebrow"><?php echo esc_html( $label ); ?></div>
+            <?php endif; ?>
+            <h2 class="ji-orgs-hero__title"><?php echo $title_html; ?></h2>
+            <?php if ( ! empty( $subtitle ) ) : ?>
+                <p class="ji-orgs-hero__sub"><?php echo esc_html( $subtitle ); ?></p>
+            <?php endif; ?>
+            <div class="ji-orgs-hero__scroll"></div>
         </div>
-    </div><!-- /.ji-ant__hero -->
+    </section><!-- /.ji-orgs-hero -->
 
     <!-- ── Cuerpo del bloque (fondo blanco) ─────────────────────────── -->
     <div class="ji-ant__body">
