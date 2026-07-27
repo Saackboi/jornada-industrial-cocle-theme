@@ -106,7 +106,13 @@
         align-items: flex-start;
         gap: 20px;
     }
-    .bloque-cta {
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  CTA Styles                              ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.bloque-cta {
         padding: 30px 20px;
     }
     .bloque-cta-contenido {

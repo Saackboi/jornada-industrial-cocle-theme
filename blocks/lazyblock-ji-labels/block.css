@@ -114,7 +114,13 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .bloque-ji-labels {
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  JI - Labels Styles                      ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.bloque-ji-labels {
         padding: 30px 20px;
     }
     

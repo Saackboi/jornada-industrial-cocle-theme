@@ -177,7 +177,13 @@
 
 /* Responsive */
 @media (max-width: 900px) {
-    .bloque-ji-hero {
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  JI - Hero Styles                        ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.bloque-ji-hero {
         padding: 40px 20px;
     }
     

@@ -234,7 +234,13 @@
 }
 
 @media (max-width: 640px) {
-    .ji-registro {
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  JI - Registro Boletos Styles            ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.ji-registro {
         padding: 62px 18px;
     }
 

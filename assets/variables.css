@@ -1,3 +1,11 @@
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  DESIGN TOKENS                           ║
+ * ║  Variables CSS del tema (colores, fonts,  ║
+ * ║  patrones). Sobrescribibles vía Customiz.║
+ * ╚═══════════════════════════════════════════╝
+ */
+
 :root {
   --ji-color-primary: #0a192f;
   --ji-color-primary-rgb: 10, 25, 47;

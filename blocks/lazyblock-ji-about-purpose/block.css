@@ -71,7 +71,13 @@
 
 /* ── Responsive ───────────────────────────────── */
 @media (max-width: 768px) {
-    .ji-about-purpose {
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  JI - About Purpose Styles               ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.ji-about-purpose {
         padding: 6rem 1rem;
         background-attachment: scroll; /* Disable parallax on mobile for performance */
     }

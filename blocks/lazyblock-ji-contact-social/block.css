@@ -254,7 +254,13 @@
 }
 
 @media (max-width: 768px) {
-    .bloque-ji-contact-social {
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  JI - Contact Social Styles              ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.bloque-ji-contact-social {
         padding: 64px 0;
     }
     .bloque-ji-contact-social-layout {

@@ -119,7 +119,13 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .bloque-ji-nav {
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  JI - Nav Styles                         ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.bloque-ji-nav {
         padding: 16px 20px;
     }
     
