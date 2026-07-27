@@ -413,7 +413,7 @@ body {
 
 @media (max-width: 768px) {
     .ji-single-hero {
-        padding: 64px 0 32px;
+        padding: 80px 0 32px;
     }
 
     .ji-single-hero__inner,
@@ -444,7 +444,7 @@ body {
     }
 
     .ji-archive {
-        padding: 64px 0;
+        padding: 80px 0 64px;
     }
 
     .ji-archive-grid {

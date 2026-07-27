@@ -430,6 +430,77 @@ function jornada_industrial_enqueue_block_editor_inline_script() {
 }
 
 /**
+ * ── SCROLL TO TOP ───────────────────────────────────────────────
+ * Botón flotante para volver al inicio de la página.
+ */
+add_action( 'wp_footer', 'jornada_industrial_scroll_to_top' );
+function jornada_industrial_scroll_to_top() {
+    ?>
+    <button id="ji-scroll-top" class="ji-scroll-top" aria-label="Volver arriba">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+    <style>
+        .ji-scroll-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--ji-color-accent, #c19a5b);
+            background: transparent;
+            color: var(--ji-color-accent, #c19a5b);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 9998;
+            box-sizing: border-box;
+        }
+        .ji-scroll-top.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .ji-scroll-top:hover {
+            background: var(--ji-color-accent, #c19a5b);
+            color: var(--ji-color-white, #ffffff);
+        }
+        .ji-scroll-top .material-symbols-outlined {
+            font-size: 24px;
+        }
+        @media (max-width: 768px) {
+            .ji-scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 42px;
+                height: 42px;
+            }
+        }
+    </style>
+    <script>
+    (function() {
+        var btn = document.getElementById('ji-scroll-top');
+        if (!btn) return;
+        var showAt = 300;
+        function onScroll() {
+            if (window.scrollY > showAt) {
+                btn.classList.add('is-visible');
+            } else {
+                btn.classList.remove('is-visible');
+            }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    })();
+    </script>
+    <?php
+}
+
+/**
  * ── HELPERS ─────────────────────────────────────────────────────
  */
 
