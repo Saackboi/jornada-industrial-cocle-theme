@@ -1,0 +1,68 @@
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  JI-BASE Section Title                   ║
+ * ║  Section title with configurable heading  ║
+ * ║  level, alignment, and optional subtitle. ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.bloque-ji-section-title {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 48px;
+    box-sizing: border-box;
+    font-family: var(--ji-font-body);
+}
+
+.bloque-ji-section-title.is-left {
+    text-align: left;
+    margin-left: 0;
+}
+
+.bloque-ji-section-title.is-center {
+    text-align: center;
+}
+
+.bloque-ji-section-title-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ji-color-accent);
+    margin-bottom: 12px;
+}
+
+.bloque-ji-section-title-heading {
+    font-family: var(--ji-font-heading);
+    font-weight: 700;
+    color: var(--ji-color-text);
+    margin: 0;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+h2.bloque-ji-section-title-heading {
+    font-size: clamp(36px, 5vw, 56px);
+}
+
+h3.bloque-ji-section-title-heading {
+    font-size: clamp(28px, 4vw, 40px);
+}
+
+h4.bloque-ji-section-title-heading {
+    font-size: clamp(22px, 3vw, 30px);
+}
+
+.bloque-ji-section-title-accent {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--ji-color-accent), var(--ji-color-primary));
+    margin-top: 20px;
+    border-radius: 2px;
+}
+
+.bloque-ji-section-title.is-center .bloque-ji-section-title-accent {
+    margin-left: auto;
+    margin-right: auto;
+}

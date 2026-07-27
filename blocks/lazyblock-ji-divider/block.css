@@ -1,0 +1,32 @@
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  JI-BASE Divider                         ║
+ * ║  Divider/separator block with             ║
+ * ║  configurable type and margin.           ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.bloque-ji-divider {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.bloque-ji-divider.is-small {
+    padding: 24px 48px;
+}
+
+.bloque-ji-divider.is-medium {
+    padding: 48px 48px;
+}
+
+.bloque-ji-divider.is-large {
+    padding: 80px 48px;
+}
+
+.bloque-ji-divider-line {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--ji-color-accent) 0%, transparent 100%);
+    margin: 0 auto;
+    border-radius: 2px;
+}

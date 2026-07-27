@@ -1,0 +1,68 @@
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  JI-BASE Button                          ║
+ * ║  Button block with configurable text,     ║
+ * ║  URL, color, and size.                   ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.bloque-ji-button {
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.bloque-ji-button-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--ji-font-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.is-small .bloque-ji-button-link {
+    padding: 8px 20px;
+    font-size: 11px;
+}
+
+.is-medium .bloque-ji-button-link {
+    padding: 14px 32px;
+    font-size: 12px;
+}
+
+.is-large .bloque-ji-button-link {
+    padding: 18px 40px;
+    font-size: 14px;
+}
+
+.is-primary .bloque-ji-button-link {
+    background: var(--ji-color-accent);
+    color: var(--ji-color-primary);
+    border-color: var(--ji-color-accent);
+}
+
+.is-primary .bloque-ji-button-link:hover {
+    background: var(--ji-color-accent-light);
+    border-color: var(--ji-color-accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(193, 154, 91, 0.3);
+}
+
+.is-outline .bloque-ji-button-link {
+    background: transparent;
+    color: var(--ji-color-accent);
+    border-color: var(--ji-color-accent);
+}
+
+.is-outline .bloque-ji-button-link:hover {
+    background: var(--ji-color-accent);
+    color: var(--ji-color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(193, 154, 91, 0.2);
+}

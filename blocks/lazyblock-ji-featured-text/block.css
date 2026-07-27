@@ -1,0 +1,47 @@
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  JI-BASE Featured Text                   ║
+ * ║  Featured text block with configurable    ║
+ * ║  size and alignment.                     ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.bloque-ji-featured-text {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 48px;
+    box-sizing: border-box;
+    font-family: var(--ji-font-body);
+}
+
+.bloque-ji-featured-text.is-left {
+    text-align: left;
+    margin-left: 0;
+}
+
+.bloque-ji-featured-text.is-center {
+    text-align: center;
+}
+
+.bloque-ji-featured-text.is-large .bloque-ji-featured-text-content {
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.5;
+}
+
+.bloque-ji-featured-text.is-medium .bloque-ji-featured-text-content {
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.6;
+}
+
+.bloque-ji-featured-text-content {
+    color: var(--ji-color-text-muted);
+    font-weight: 400;
+}
+
+.bloque-ji-featured-text-content p {
+    margin: 0 0 16px;
+}
+
+.bloque-ji-featured-text-content p:last-child {
+    margin-bottom: 0;
+}

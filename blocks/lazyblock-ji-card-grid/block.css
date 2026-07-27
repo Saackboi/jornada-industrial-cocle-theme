@@ -1,0 +1,95 @@
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  JI-BASE Card Grid                       ║
+ * ║  Grid of cards with configurable          ║
+ * ║  columns and repeater items.             ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+.bloque-ji-card-grid {
+    box-sizing: border-box;
+    font-family: var(--ji-font-body);
+}
+
+.bloque-ji-card-grid-inner {
+    display: grid;
+    gap: 32px;
+    justify-content: center;
+    padding: 0 48px;
+}
+
+.has-2-cols .bloque-ji-card-grid-inner {
+    grid-template-columns: repeat(2, minmax(0, 560px));
+}
+
+.has-3-cols .bloque-ji-card-grid-inner {
+    grid-template-columns: repeat(3, minmax(0, 400px));
+}
+
+.bloque-ji-card-grid-item {
+    background: var(--ji-bg-light);
+    border: 1px solid var(--ji-border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.bloque-ji-card-grid-item:hover {
+    border-color: rgba(193, 154, 91, 0.35);
+    transform: translateY(-3px);
+}
+
+.bloque-ji-card-grid-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.bloque-ji-card-grid-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.bloque-ji-card-grid-item:hover .bloque-ji-card-grid-image img {
+    transform: scale(1.05);
+}
+
+.bloque-ji-card-grid-body {
+    padding: 24px;
+}
+
+.bloque-ji-card-grid-title {
+    font-family: var(--ji-font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ji-color-text);
+    margin: 0 0 10px;
+    line-height: 1.25;
+}
+
+.bloque-ji-card-grid-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.bloque-ji-card-grid-title a:hover {
+    color: var(--ji-color-accent);
+}
+
+.bloque-ji-card-grid-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ji-color-text-muted);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .has-2-cols .bloque-ji-card-grid-inner,
+    .has-3-cols .bloque-ji-card-grid-inner {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
