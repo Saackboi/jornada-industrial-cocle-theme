@@ -1,12 +1,11 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
- * ║  JI-BASE Featured Text                   ║
- * ║  Featured text block with configurable    ║
- * ║  size and alignment.                     ║
+ * ║  JI-BASE Texto Destacado                 ║
+ * ║  Featured text block with size and        ║
+ * ║  alignment options.                      ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 add_action( 'init', 'jornada_industrial_register_style_ji_featured_text' );
 function jornada_industrial_register_style_ji_featured_text() {
     wp_enqueue_block_style(

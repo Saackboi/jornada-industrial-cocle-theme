@@ -1,12 +1,11 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
- * ║  JI-BASE Divider                         ║
- * ║  Divider/separator block with             ║
- * ║  configurable type and margin.           ║
+ * ║  JI-BASE Separador Decorativo            ║
+ * ║  Divider block with line or spacing       ║
+ * ║  and configurable margin.                ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 add_action( 'init', 'jornada_industrial_register_style_ji_divider' );
 function jornada_industrial_register_style_ji_divider() {
     wp_enqueue_block_style(

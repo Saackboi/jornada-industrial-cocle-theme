@@ -1,12 +1,11 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
- * ║  JI-BASE Section Title                   ║
- * ║  Section title with configurable heading  ║
- * ║  level, alignment, and optional subtitle. ║
+ * ║  JI-BASE Título de Sección               ║
+ * ║  Section heading with label, level,       ║
+ * ║  alignment, and decorative accent.       ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 // Field extraction
 $titulo = isset( $attributes['titulo'] ) ? $attributes['titulo'] : '';
 $nivel = isset( $attributes['nivel'] ) ? $attributes['nivel'] : 'h2';

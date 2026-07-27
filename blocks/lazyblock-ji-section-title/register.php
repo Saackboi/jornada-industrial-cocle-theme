@@ -1,12 +1,11 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
- * ║  JI-BASE Section Title                   ║
- * ║  Section title with configurable heading  ║
- * ║  level, alignment, and optional subtitle. ║
+ * ║  JI-BASE Título de Sección               ║
+ * ║  Section heading block with label,        ║
+ * ║  level, alignment, accent toggle.        ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 add_action( 'init', 'jornada_industrial_register_style_ji_section_title' );
 function jornada_industrial_register_style_ji_section_title() {
     wp_enqueue_block_style(

@@ -1,12 +1,11 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
- * ║  JI-BASE Divider                         ║
- * ║  Divider/separator block with             ║
- * ║  configurable type and margin.           ║
+ * ║  JI-BASE Separador Decorativo            ║
+ * ║  Divider block with line or spacing       ║
+ * ║  options and configurable margin.        ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 // Field extraction
 $tipo = isset( $attributes['tipo'] ) ? $attributes['tipo'] : 'line';
 $margen = isset( $attributes['margen'] ) ? $attributes['margen'] : 'medium';

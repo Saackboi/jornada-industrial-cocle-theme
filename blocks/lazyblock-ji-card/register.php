@@ -1,12 +1,11 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
- * ║  JI-BASE Card                            ║
- * ║  Single card block with title,            ║
- * ║  description, image, and link.           ║
+ * ║  JI-BASE Tarjeta Simple                  ║
+ * ║  Single card block with image, title,     ║
+ * ║  description, and optional link.         ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 add_action( 'init', 'jornada_industrial_register_style_ji_card' );
 function jornada_industrial_register_style_ji_card() {
     wp_enqueue_block_style(

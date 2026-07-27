@@ -1,12 +1,11 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
- * ║  JI-BASE Card                            ║
- * ║  Single card block with title,            ║
- * ║  description, image, and link.           ║
+ * ║  JI-BASE Tarjeta Simple                  ║
+ * ║  Single card with image, title,           ║
+ * ║  description, and optional link.         ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 // Field extraction
 $titulo = isset( $attributes['titulo'] ) ? $attributes['titulo'] : '';
 $descripcion = isset( $attributes['descripcion'] ) ? $attributes['descripcion'] : '';

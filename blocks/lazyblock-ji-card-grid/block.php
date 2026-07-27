@@ -1,12 +1,11 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
- * ║  JI-BASE Card Grid                       ║
- * ║  Grid of cards with configurable          ║
- * ║  columns and repeater items.             ║
+ * ║  JI-BASE Grid de Tarjetas                ║
+ * ║  Repeater-based card grid with 2 or 3    ║
+ * ║  columns. Each card: title, desc, image. ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 // Field extraction
 $columnas = isset( $attributes['columnas'] ) ? $attributes['columnas'] : '3';
 $cards_raw = isset( $attributes['cards'] ) ? $attributes['cards'] : array();

@@ -1,12 +1,11 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
- * ║  JI-BASE Featured Text                   ║
- * ║  Featured text block with configurable    ║
- * ║  size and alignment.                     ║
+ * ║  JI-BASE Texto Destacado                 ║
+ * ║  Featured text block with size and        ║
+ * ║  align options.                          ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 // Field extraction
 $texto = isset( $attributes['texto'] ) ? $attributes['texto'] : '';
 $tamano = isset( $attributes['tamano'] ) ? $attributes['tamano'] : 'large';

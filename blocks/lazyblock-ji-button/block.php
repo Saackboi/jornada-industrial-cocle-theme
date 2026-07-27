@@ -1,3 +1,4 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
  * ║  JI-BASE Button                          ║
@@ -5,8 +6,6 @@
  * ║  URL, color, and size.                   ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 // Field extraction
 $texto = isset( $attributes['texto'] ) ? $attributes['texto'] : 'Ver más';
 $url = isset( $attributes['url'] ) ? $attributes['url'] : '#';

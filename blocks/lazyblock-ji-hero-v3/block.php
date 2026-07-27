@@ -14,13 +14,7 @@ $descripcion = isset( $attributes['descripcion'] ) ? $attributes['descripcion'] 
 $default_bg_url = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBwyLVd_QuBn8HpihInNIVIC9w3s90YYiyvbxBQJgL8Xi-7hnIQtls2ApQY2yO8cHMyRFwP-NcgxzIhsbHvZ-jpFAbr19ylr6-kgDqZHmQgxZxqyd6QizU4VRD57O0SFA3nkIinduvmKnoP63acqQv4RQe__ozGDFRbgnA-upI8Lxirz5pXaguWdP96dZ3mwoLWfev9rzWOHBvMkHK_tfPaVno-rmQ6sjrKCgxe9iXfHtv6RmU6aJhIgysjiRHj3CYVuG7PmOa_rIg';
 $bg_url = isset( $attributes['bg_image'] ) ? ji_get_block_image_url( $attributes['bg_image'], $default_bg_url ) : $default_bg_url;
 
-// Debug: write attributes to temp file
-file_put_contents( __DIR__ . '/debug_hero.txt', "TIMESTAMP: " . time() . "\n" . print_r( $attributes, true ) );
-?>
-<!-- DEBUG HERO ATTRIBUTES: 
-<?php echo esc_html( var_export( $attributes, true ) ); ?>
--->
-<?php
+
 
 // Repeater: cards
 $cards = isset( $attributes['cards'] ) && is_array( $attributes['cards'] ) ? $attributes['cards'] : array();

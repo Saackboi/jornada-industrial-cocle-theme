@@ -1,12 +1,11 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
- * ║  JI-BASE Card Grid                       ║
- * ║  Grid of cards with configurable          ║
- * ║  columns and repeater items.             ║
+ * ║  JI-BASE Grid de Tarjetas                ║
+ * ║  Repeater card grid block with 2 or 3    ║
+ * ║  columns.                                ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 add_action( 'init', 'jornada_industrial_register_style_ji_card_grid' );
 function jornada_industrial_register_style_ji_card_grid() {
     wp_enqueue_block_style(

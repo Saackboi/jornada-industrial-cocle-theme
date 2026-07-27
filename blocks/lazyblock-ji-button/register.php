@@ -1,3 +1,4 @@
+<?php
 /**
  * ╔═══════════════════════════════════════════╗
  * ║  JI-BASE Button                          ║
@@ -5,8 +6,6 @@
  * ║  URL, color, and size.                   ║
  * ╚═══════════════════════════════════════════╝
  */
-
-<?php
 add_action( 'init', 'jornada_industrial_register_style_ji_button' );
 function jornada_industrial_register_style_ji_button() {
     wp_enqueue_block_style(
