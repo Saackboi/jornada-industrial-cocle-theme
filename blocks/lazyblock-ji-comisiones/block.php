@@ -63,7 +63,7 @@ if ( ! empty( $title ) ) {
             <p class="ji-com-creative__subtitle">Pasa el cursor sobre cada comisión para descubrir a su equipo.</p>
         </header>
 
-        <div class="ji-com-acc" id="ji-com-acc">
+        <div class="ji-com-acc">
             <?php 
             $i = 0;
             foreach ( $commissions as $com ) : 
@@ -107,19 +107,19 @@ if ( ! empty( $title ) ) {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const items = document.querySelectorAll('.ji-com-acc__item');
-    if(items.length > 0) {
-        items.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                items.forEach(i => i.classList.remove('is-active'));
-                item.classList.add('is-active');
+    document.querySelectorAll('.ji-com-acc').forEach(function(accordion) {
+        const items = accordion.querySelectorAll('.ji-com-acc__item');
+        if(items.length > 0) {
+            items.forEach(item => {
+                const activateItem = () => {
+                    items.forEach(i => i.classList.remove('is-active'));
+                    item.classList.add('is-active');
+                };
+
+                item.addEventListener('mouseenter', activateItem);
+                item.addEventListener('click', activateItem);
             });
-            // Support for touch devices
-            item.addEventListener('click', () => {
-                items.forEach(i => i.classList.remove('is-active'));
-                item.classList.add('is-active');
-            });
-        });
-    }
+        }
+    });
 });
 </script>
