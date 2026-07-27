@@ -8,6 +8,8 @@
 
 // Variable extraction
 $target_date = isset( $attributes['target_date'] ) ? $attributes['target_date'] : '2026-06-15 09:00:00';
+$cta_text    = isset( $attributes['cta_text'] ) ? $attributes['cta_text'] : 'Compra tu boleto';
+$cta_url     = isset( $attributes['cta_url'] ) ? $attributes['cta_url'] : '#';
 $unique_id   = uniqid( 'ji-countdown-' );
 
 // Container classes
@@ -45,6 +47,16 @@ if ( isset( $attributes['className'] ) && ! empty( $attributes['className'] ) ) 
                 <span class="bloque-ji-countdown-label">Segundos</span>
             </div>
         </div>
+
+        <?php if ( $cta_text ) : ?>
+            <div class="bloque-ji-countdown-cta">
+                <p class="bloque-ji-countdown-cta-text">Asegura tu lugar en la jornada</p>
+                <a href="<?php echo esc_url( $cta_url ); ?>" class="bloque-ji-countdown-btn">
+                    <?php echo esc_html( $cta_text ); ?>
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+        <?php endif; ?>
     </div>
 
     <script type="text/javascript">

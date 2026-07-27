@@ -33,6 +33,8 @@ function jornada_industrial_register_block_ji_countdown() {
             ),
             'controls' => array(
                 'control_countdown_date' => array( 'type' => 'text', 'name' => 'target_date', 'label' => 'Fecha Objetivo (YYYY-MM-DD HH:MM:SS)', 'placement' => 'inspector', 'default' => '2026-06-15 09:00:00' ),
+                'control_countdown_cta_text' => array( 'type' => 'text', 'name' => 'cta_text', 'label' => 'Texto del botón', 'placement' => 'inspector', 'default' => 'Compra tu boleto' ),
+                'control_countdown_cta_url' => array( 'type' => 'url', 'name' => 'cta_url', 'label' => 'Enlace del botón', 'placement' => 'inspector', 'default' => '#' ),
             ),
         ) );
     }

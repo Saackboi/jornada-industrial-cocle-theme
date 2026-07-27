@@ -212,11 +212,13 @@
     .bloque-ji-navbar-layout {
         padding: 20px 24px;
     }
-}
 
-@media (max-width: 768px) {
     .bloque-ji-navbar-mobile-toggle {
         display: block;
+    }
+
+    .bloque-ji-navbar-brand {
+        font-size: 16px;
     }
     
     .bloque-ji-navbar-menu-container {
@@ -258,6 +260,8 @@
         width: 100%;
         justify-content: space-between;
         padding: 10px 0;
+        font-size: 12px;
+        letter-spacing: 0.2em;
     }
 
     .bloque-ji-navbar-dropdown {
@@ -283,6 +287,8 @@
     }
     
     .bloque-ji-navbar-btn {
-        display: none; /* Se oculta el botón en móvil para diseño minimalista */
+        padding: 8px 14px;
+        font-size: 10px;
+        letter-spacing: 0.15em;
     }
 }
