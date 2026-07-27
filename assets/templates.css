@@ -1,3 +1,11 @@
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  TEMPLATE STYLES                         ║
+ * ║  Estilos para single.php, archive.php    ║
+ * ║  y páginas de categoría.                 ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
 body {
     margin: 0;
     padding: 0;
@@ -96,7 +104,9 @@ body {
 
 .ji-single-featured-img {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 5 / 2;
     height: auto;
     display: block;
     object-fit: cover;
@@ -112,6 +122,7 @@ body {
 
 .ji-single-content {
     max-width: 760px;
+    margin: 0 auto;
     color: var(--ji-color-text-muted);
     font-size: 18px;
     line-height: 1.8;
@@ -190,6 +201,7 @@ body {
     letter-spacing: -0.025em;
     margin: 0;
     color: var(--ji-color-text);
+    text-transform: uppercase;
 }
 
 .ji-archive-desc {
@@ -363,6 +375,29 @@ body {
 .ji-archive-empty p {
     color: var(--ji-color-text-muted);
     margin: 0;
+}
+
+.ji-template-footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--ji-border-light);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ji-template-footer__org {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ji-color-text-muted-soft, rgba(10, 25, 47, 0.6));
+    letter-spacing: 0.04em;
+}
+
+.ji-template-footer__event {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ji-color-text-muted, rgba(10, 25, 47, 0.7));
+    letter-spacing: 0.06em;
 }
 
 @media (max-width: 991px) {

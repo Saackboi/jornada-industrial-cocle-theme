@@ -1,17 +1,27 @@
 <?php
 /**
- * Plantilla para archivos de entradas.
+ * ╔═══════════════════════════════════════════╗
+ * ║  ARCHIVE — Listado por categoría         ║
+ * ║  Muestra un grid de tarjetas con las     ║
+ * ║  entradas de una categoría. Funciona     ║
+ * ║  para noticias, giras, simposio, etc.    ║
+ * ╚═══════════════════════════════════════════╝
  */
 
-$archive_title = is_category( array( 'noticias', 'actualidad' ) ) ? 'Noticias' : wp_strip_all_tags( get_the_archive_title() );
-$archive_desc  = get_the_archive_description();
+$current_cat = get_queried_object();
+$cat_name = '';
+$archive_desc = get_the_archive_description(); // Descripción de la categoría (si tiene)
+if ( $current_cat && is_category() ) {
+    $cat_name = single_cat_title( '', false );
+}
+$archive_title = $cat_name ? $cat_name : 'Entradas';
+$card_tag = $cat_name ? $cat_name : 'Entrada'; // Tag en cada tarjeta
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php wp_title( '|', true, 'right' ); ?></title>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -22,7 +32,6 @@ $archive_desc  = get_the_archive_description();
         <div class="ji-archive-layout">
             <header class="ji-archive-header">
                 <div class="ji-archive-header__titles">
-                    <span class="ji-template-overline">Actualidad</span>
                     <h1 class="ji-archive-title"><?php echo esc_html( $archive_title ); ?></h1>
                     <?php if ( $archive_desc ) : ?>
                         <div class="ji-archive-desc"><?php echo wp_kses_post( wpautop( $archive_desc ) ); ?></div>
@@ -48,7 +57,7 @@ $archive_desc  = get_the_archive_description();
                             </a>
 
                             <div class="ji-archive-card__content">
-                                <span class="ji-news-card-tag">Noticia</span>
+                                <span class="ji-news-card-tag"><?php echo get_the_date( 'd/m/Y' ); ?></span>
                                 <h2 class="ji-archive-card__title">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h2>
@@ -62,7 +71,7 @@ $archive_desc  = get_the_archive_description();
                     <?php endwhile; ?>
                 </div>
 
-                <nav class="ji-archive-pagination" aria-label="Paginación de noticias">
+                <nav class="ji-archive-pagination" aria-label="Paginación">
                     <?php
                     the_posts_pagination( array(
                         'mid_size'  => 1,
@@ -73,13 +82,18 @@ $archive_desc  = get_the_archive_description();
                 </nav>
             <?php else : ?>
                 <div class="ji-archive-empty">
-                    <h2>No hay noticias publicadas todavía.</h2>
-                    <p>Cuando se publiquen entradas, aparecerán automáticamente en este listado.</p>
+                    <h2>No hay entradas publicadas todavía.</h2>
+                    <p>Cuando se publiquen, aparecerán automáticamente en este listado.</p>
                 </div>
             <?php endif; ?>
         </div>
     </section>
 </main>
+
+<div class="ji-template-footer">
+    <span class="ji-template-footer__org">Universidad Tecnológica de Panamá, Centro Regional de Coclé</span>
+    <span class="ji-template-footer__event">Jornada Industrial — <?php echo date( 'Y' ); ?></span>
+</div>
 
 <?php wp_footer(); ?>
 </body>

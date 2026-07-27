@@ -1,6 +1,11 @@
 <?php
 /**
- * Plantilla para entradas individuales.
+ * ╔═══════════════════════════════════════════╗
+ * ║  SINGLE — Entrada individual             ║
+ * ║  Muestra una entrada con imagen          ║
+ * ║  destacada, título, fecha, contenido     ║
+ * ║  y enlace "Volver" a la categoría.       ║
+ * ╚═══════════════════════════════════════════╝
  */
 ?>
 <!DOCTYPE html>
@@ -8,7 +13,6 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php wp_title( '|', true, 'right' ); ?></title>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -18,11 +22,19 @@
     <?php if ( have_posts() ) : ?>
         <?php while ( have_posts() ) : the_post(); ?>
             <article <?php post_class( 'ji-single-post' ); ?>>
+                <?php
+                // Determinar URL de retorno según la primera categoría del post
+                $back_cats = get_the_category();
+                $back_url = ji_get_news_archive_url(); // fallback a noticias
+                if ( ! empty( $back_cats ) ) {
+                    $back_url = get_category_link( $back_cats[0]->term_id );
+                }
+                ?>
                 <header class="ji-single-hero">
                     <div class="ji-single-hero__inner">
-                        <a class="ji-template-back-link" href="<?php echo esc_url( ji_get_news_archive_url() ); ?>">
+                        <a class="ji-template-back-link" href="<?php echo esc_url( $back_url ); ?>">
                             <span class="material-symbols-outlined">arrow_back</span>
-                            Volver a noticias
+                            Volver
                         </a>
 
                         <span class="ji-template-overline">
@@ -51,9 +63,9 @@
                     </div>
 
                     <footer class="ji-single-footer">
-                        <a class="ji-template-back-link" href="<?php echo esc_url( ji_get_news_archive_url() ); ?>">
+                        <a class="ji-template-back-link" href="<?php echo esc_url( $back_url ); ?>">
                             <span class="material-symbols-outlined">arrow_back</span>
-                            Volver a noticias
+                            Volver
                         </a>
                     </footer>
                 </div>
@@ -61,6 +73,11 @@
         <?php endwhile; ?>
     <?php endif; ?>
 </main>
+
+<div class="ji-template-footer">
+    <span class="ji-template-footer__org">Universidad Tecnológica de Panamá, Centro Regional de Coclé</span>
+    <span class="ji-template-footer__event">Jornada Industrial — <?php echo date( 'Y' ); ?></span>
+</div>
 
 <?php wp_footer(); ?>
 </body>

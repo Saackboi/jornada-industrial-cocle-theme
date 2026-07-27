@@ -1,18 +1,30 @@
 <?php
 /**
- * Setup del tema Jornada Industrial.
+ * ╔══════════════════════════════════════════════════════════════╗
+ * ║  JORNADA INDUSTRIAL — TEMA WORDPRESS                       ║
+ * ║  Funciones principales del tema                             ║
+ * ║                                                              ║
+ * ║  Propósito: Configuración base, Customizer, carga de        ║
+ * ║  activos (CSS/JS), autoloader de bloques Lazy Blocks,       ║
+ * ║  helpers para imágenes, colores y tipografía.               ║
+ * ╚══════════════════════════════════════════════════════════════╝
+ */
+
+/**
+ * Configuración inicial del tema.
+ * Se ejecuta después de que el tema está listo.
  */
 function jornada_industrial_setup() {
-    // Permitir el uso de bloques anchos (Wide Width) y de ancho completo (Full Width)
     add_theme_support( 'align-wide' );
-    
-    // Habilitar soporte para Imágenes Destacadas (Post Thumbnails)
     add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'title-tag' );
 }
 add_action( 'after_setup_theme', 'jornada_industrial_setup' );
 
 /**
- * Encolar fuentes de Google y Material Icons para frontend y editor.
+ * Carga recursos globales: Google Fonts, Material Icons, variables CSS y estilos de plantillas.
+ * Se ejecuta tanto en frontend como en el editor Gutenberg.
+ * Usa static guard para evitar duplicados si ambos hooks se disparan.
  */
 add_action( 'enqueue_block_assets', 'jornada_industrial_enqueue_global_assets' );
 add_action( 'wp_enqueue_scripts', 'jornada_industrial_enqueue_global_assets' );
@@ -23,11 +35,14 @@ function jornada_industrial_enqueue_global_assets() {
     }
     $did_enqueue = true;
 
+    // Iconos Material Symbols
     wp_enqueue_style( 'material-symbols-outlined', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap', array(), null );
 
+    // Variables de diseño del tema + overrides del Customizer
     wp_enqueue_style( 'ji-global-variables', get_template_directory_uri() . '/assets/variables.css', array(), null );
     wp_add_inline_style( 'ji-global-variables', ji_get_customizer_css() );
 
+    // Estilos para plantillas (single, archive)
     wp_enqueue_style(
         'ji-template-styles',
         get_template_directory_uri() . '/assets/templates.css',
@@ -35,6 +50,7 @@ function jornada_industrial_enqueue_global_assets() {
         filemtime( get_template_directory() . '/assets/templates.css' )
     );
 
+    // Google Fonts según la combinación elegida en Customizer
     $font_pairing = get_theme_mod( 'ji_font_pairing', 'bodoni-hanken' );
     $pairings = ji_get_font_pairings();
     if ( isset( $pairings[ $font_pairing ] ) ) {
@@ -43,7 +59,9 @@ function jornada_industrial_enqueue_global_assets() {
 }
 
 /**
- * Obtiene la URL del listado de noticias.
+ * Helper: devuelve la URL del archive de noticias.
+ * Busca primero categoría "noticias", luego "actualidad", luego page_for_posts.
+ * Usado en single.php para el enlace "Volver".
  */
 function ji_get_news_archive_url() {
     $cat = get_category_by_slug( 'noticias' );
@@ -65,7 +83,8 @@ function ji_get_news_archive_url() {
 }
 
 /**
- * Font pairings para el Customizer.
+ * Define las 4 combinaciones tipográficas disponibles en el Customizer.
+ * Cada una: label, heading_font, body_font, google_url.
  */
 function ji_get_font_pairings() {
     return array(
@@ -97,7 +116,8 @@ function ji_get_font_pairings() {
 }
 
 /**
- * Convertir hex a string RGB.
+ * Convierte un color hex (ej. #0a192f) a string RGB (ej. "10, 25, 47").
+ * Soporta hex de 3 y 6 dígitos.
  */
 function ji_hex_to_rgb( $hex ) {
     $hex = ltrim( $hex, '#' );
@@ -111,7 +131,8 @@ function ji_hex_to_rgb( $hex ) {
 }
 
 /**
- * Lighten a hex color by a percentage.
+ * Aclara un color hex en un porcentaje dado.
+ * Útil para generar variantes hover/light de colores primarios.
  */
 function ji_lighten_hex( $hex, $percent ) {
     $hex = ltrim( $hex, '#' );
@@ -128,7 +149,9 @@ function ji_lighten_hex( $hex, $percent ) {
 }
 
 /**
- * Customizer: Sección Paleta de Colores Jornada Industrial.
+ * ── CUSTOMIZER ──────────────────────────────────────────────────
+ * Registra la sección "Paleta de Colores" con opciones de color
+ * primario, acento y combinación tipográfica.
  */
 add_action( 'customize_register', 'jornada_industrial_customizer_register' );
 function jornada_industrial_customizer_register( $wp_customize ) {
@@ -138,6 +161,7 @@ function jornada_industrial_customizer_register( $wp_customize ) {
         'description' => 'Personaliza colores y tipografía del tema.',
     ) );
 
+    // Color Primario
     $wp_customize->add_setting( 'ji_primary_color', array(
         'default'   => '#0a192f',
         'transport' => 'refresh',
@@ -148,6 +172,7 @@ function jornada_industrial_customizer_register( $wp_customize ) {
         'section'  => 'ji_theme_options',
     ) ) );
 
+    // Color de Acento (oro)
     $wp_customize->add_setting( 'ji_accent_color', array(
         'default'   => '#c19a5b',
         'transport' => 'refresh',
@@ -158,6 +183,7 @@ function jornada_industrial_customizer_register( $wp_customize ) {
         'section'  => 'ji_theme_options',
     ) ) );
 
+    // Combinación tipográfica
     $pairings = ji_get_font_pairings();
     $choices = array();
     foreach ( $pairings as $key => $pairing ) {
@@ -178,10 +204,9 @@ function jornada_industrial_customizer_register( $wp_customize ) {
 }
 
 /**
- * Inyectar CSS con valores del Customizer.
- */
-/**
- * Devuelve el CSS inline del Customizer para sobreescribir variables.css.
+ * Devuelve el CSS inline generado desde los valores del Customizer.
+ * Sobrescribe las variables de assets/variables.css dinámicamente.
+ * Se inyecta tanto en frontend (wp_head) como en editor (enqueue_block_assets).
  */
 function ji_get_customizer_css() {
     $primary = get_theme_mod( 'ji_primary_color', '#0a192f' );
@@ -208,14 +233,18 @@ function ji_get_customizer_css() {
 }
 
 /**
- * Fallback: inyecta en wp_head por si acaso (vía inline style ya cubre editor).
+ * Fallback: inyecta el CSS del Customizer en wp_head.
+ * El inline style ya se inyecta via enqueue_block_assets,
+ * esto asegura cobertura en páginas que no cargan el editor.
  */
 add_action( 'wp_head', function () {
     echo '<style id="ji-customizer-vars">' . ji_get_customizer_css() . '</style>';
 } );
 
 /**
- * Autoloader para cargar el registro y callbacks de cada bloque modular.
+ * ── AUTOLOADER DE BLOQUES ──────────────────────────────────────
+ * Escanea /blocks/ y carga cada register.php automáticamente.
+ * Cada bloque declara su estilo, registro y callback.
  */
 function jornada_industrial_autoload_blocks() {
     $blocks_dir = get_template_directory() . '/blocks';
@@ -234,7 +263,14 @@ function jornada_industrial_autoload_blocks() {
 jornada_industrial_autoload_blocks();
 
 /**
- * Filter to fix default values for repeater controls in Lazy Blocks
+ * ── LAZY BLOCKS FIXES ──────────────────────────────────────────
+ * Los siguientes filtros corrigen problemas de serialización
+ * de atributos en Lazy Blocks (versión gratuita).
+ */
+
+/**
+ * Codifica en URL los valores por defecto de los repetidores
+ * para que Gutenberg los serialice correctamente.
  */
 add_filter( 'lzb/prepare_block_attribute', 'jornada_industrial_repeater_default_fix', 20, 2 );
 function jornada_industrial_repeater_default_fix( $attribute_data, $control ) {
@@ -245,7 +281,11 @@ function jornada_industrial_repeater_default_fix( $attribute_data, $control ) {
 }
 
 /**
- * Enqueue block editor inline script to fix Lazy Blocks repeater default value serialization in Gutenberg
+ * Inyecta JavaScript en el editor para:
+ * 1. Forzar defaults serializados como URL-encoded JSON.
+ * 2. Solucionar el bloqueo de teclado en nested repeaters (sub_links).
+ *    Intercepta los valores del repetidor padre, los modifica
+ *    y los vuelve a serializar.
  */
 add_action( 'enqueue_block_editor_assets', 'jornada_industrial_enqueue_block_editor_inline_script', 100 );
 function jornada_industrial_enqueue_block_editor_inline_script() {
@@ -263,36 +303,15 @@ function jornada_industrial_enqueue_block_editor_inline_script() {
             window.wp.hooks.addFilter('lzb.registerBlockType.args', 'jornada-industrial/repeater-default-fix', function( args, slug, blockData ) {
                 if ( blockData && blockData.controls ) {
                     args.attributes = args.attributes || {};
-                    
-                    // Preservar los atributos reservados estándar de Lazy Blocks en el cliente
-                    args.attributes['lazyblock'] = {
-                        type: 'object',
-                        default: { slug: slug }
-                    };
-                    args.attributes['className'] = {
-                        type: 'string',
-                        default: ''
-                    };
-                    args.attributes['anchor'] = {
-                        type: 'string',
-                        default: ''
-                    };
-                    args.attributes['blockId'] = {
-                        type: 'string',
-                        default: ''
-                    };
-                    args.attributes['blockUniqueClass'] = {
-                        type: 'string',
-                        default: ''
-                    };
-                    args.attributes['ghostkitSpacings'] = {
-                        type: 'object',
-                        default: ''
-                    };
-                    args.attributes['ghostkitSR'] = {
-                        type: 'string',
-                        default: ''
-                    };
+
+                    // Preservar atributos estándar de Lazy Blocks
+                    args.attributes['lazyblock'] = { type: 'object', default: { slug: slug } };
+                    args.attributes['className'] = { type: 'string', default: '' };
+                    args.attributes['anchor'] = { type: 'string', default: '' };
+                    args.attributes['blockId'] = { type: 'string', default: '' };
+                    args.attributes['blockUniqueClass'] = { type: 'string', default: '' };
+                    args.attributes['ghostkitSpacings'] = { type: 'object', default: '' };
+                    args.attributes['ghostkitSR'] = { type: 'string', default: '' };
 
                     Object.keys(blockData.controls).forEach(function(key) {
                         var control = blockData.controls[key];
@@ -304,10 +323,7 @@ function jornada_industrial_enqueue_block_editor_inline_script() {
                                     default: hasDefault ? rawurlencode(JSON.stringify(control.default)) : ''
                                 };
                             } else if (control.type === 'image' || control.type === 'file' || control.type === 'gallery') {
-                                args.attributes[control.name] = {
-                                    type: 'string',
-                                    default: ''
-                                };
+                                args.attributes[control.name] = { type: 'string', default: '' };
                             } else if (control.type === 'toggle' || control.type === 'checkbox') {
                                 args.attributes[control.name] = {
                                     type: 'boolean',
@@ -325,7 +341,9 @@ function jornada_industrial_enqueue_block_editor_inline_script() {
                 return args;
             });
 
-            // Filtros para solucionar el problema del repetidor anidado (nested repeater) de Lazy Blocks
+            // ── NESTED REPEATER FIX ──
+            // Gestiona los sub-controles de nav_links.sub_links
+            // para evitar bloqueo de inputs en repetidores anidados.
             function getNavLinks(parentProps) {
                 var rawNavLinks = parentProps && parentProps.attributes && parentProps.attributes.nav_links;
                 var navLinks = [];
@@ -334,12 +352,8 @@ function jornada_industrial_enqueue_block_editor_inline_script() {
                         var decoded = decodeURIComponent(rawNavLinks);
                         navLinks = JSON.parse(decoded);
                     } catch (e) {
-                        try {
-                            navLinks = JSON.parse(rawNavLinks);
-                        } catch (err) {
-                            try {
-                                navLinks = JSON.parse(decodeURI(rawNavLinks));
-                            } catch (err2) {}
+                        try { navLinks = JSON.parse(rawNavLinks); } catch (err) {
+                            try { navLinks = JSON.parse(decodeURI(rawNavLinks)); } catch (err2) {}
                         }
                     }
                 } else if (Array.isArray(rawNavLinks)) {
@@ -351,24 +365,20 @@ function jornada_industrial_enqueue_block_editor_inline_script() {
             function saveNavLinks(parentProps, navLinks) {
                 if (parentProps && parentProps.setAttributes) {
                     var serialized = rawurlencode(JSON.stringify(navLinks));
-                    parentProps.setAttributes({
-                        nav_links: serialized
-                    });
+                    parentProps.setAttributes({ nav_links: serialized });
                 }
             }
 
             window.wp.hooks.addFilter('lzb.editor.control.repeater.render', 'jornada-industrial/sub-repeater-render-fix', function(render, props, parentProps) {
                 if (props.data && props.data.name === 'sub_links') {
-                    var parentIndex = props.childIndex; // i
-                    
+                    var parentIndex = props.childIndex;
                     var navLinks = getNavLinks(parentProps);
                     var parentLink = navLinks[parentIndex];
-                    
-                    // Si el enlace padre no tiene marcado 'is_dropdown', no renderizamos este control (lo ocultamos)
+
                     if (!parentLink || !parentLink.is_dropdown) {
                         return null;
                     }
-                    
+
                     var originalRenderControls = props.renderControls;
                     props.renderControls = function() {
                         window.lazyblocksSubLinksParentIndex = parentIndex;
@@ -385,8 +395,8 @@ function jornada_industrial_enqueue_block_editor_inline_script() {
             function wrapControlProps(render, props, parentProps) {
                 if (props.data && props.data.child_of === 'control_navv2_links_sub_links') {
                     var parentIndex = window.lazyblocksSubLinksParentIndex;
-                    var childIndex = props.childIndex; // j
-                    
+                    var childIndex = props.childIndex;
+
                     if (parentIndex !== undefined && parentProps) {
                         props.getValue = function() {
                             var navLinks = getNavLinks(parentProps);
@@ -396,7 +406,7 @@ function jornada_industrial_enqueue_block_editor_inline_script() {
                             }
                             return '';
                         };
-                        
+
                         props.onChange = function(newVal) {
                             var navLinks = getNavLinks(parentProps);
                             var parentLink = navLinks[parentIndex];
@@ -420,8 +430,15 @@ function jornada_industrial_enqueue_block_editor_inline_script() {
 }
 
 /**
- * Obtener la URL de una imagen de Lazy Blocks de forma robusta.
- * Resuelve arrays, IDs numéricos, JSON encriptado/urlencoded y URLs directas en texto.
+ * ── HELPERS ─────────────────────────────────────────────────────
+ */
+
+/**
+ * Obtiene la URL de una imagen desde múltiples formatos que Lazy Blocks puede devolver:
+ * - Array con clave 'url'
+ * - ID numérico de attachment
+ * - JSON string (incluyendo URL-encoded)
+ * - URL directa (http, /, ./)
  */
 function ji_get_block_image_url( $image_val, $fallback = '' ) {
     if ( empty( $image_val ) ) {
@@ -436,25 +453,24 @@ function ji_get_block_image_url( $image_val, $fallback = '' ) {
     }
     if ( is_string( $image_val ) ) {
         $image_val = trim( $image_val );
-        
-        // Resolver URL-encoded JSON
+
+        // Detectar JSON encodeado en URL
         if ( 0 === strpos( $image_val, '%7B' ) || 0 === strpos( $image_val, '%7b' ) ) {
             $image_val = rawurldecode( $image_val );
         }
-        
-        // Resolver JSON
+
+        // Parsear JSON
         if ( 0 === strpos( $image_val, '{' ) ) {
             $decoded = json_decode( $image_val, true );
             if ( is_array( $decoded ) && ! empty( $decoded['url'] ) ) {
                 return $decoded['url'];
             }
         }
-        
-        // Si es un URL directo o ruta relativa
+
+        // URL directa
         if ( 0 === strpos( $image_val, 'http' ) || 0 === strpos( $image_val, '/' ) || 0 === strpos( $image_val, './' ) ) {
             return $image_val;
         }
     }
     return $fallback;
 }
-

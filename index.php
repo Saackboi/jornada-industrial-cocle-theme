@@ -1,7 +1,10 @@
 <?php
 /**
- * Plantilla principal del tema Jornada Industrial.
- * Muestra el contenido de Gutenberg de forma directa y limpia.
+ * ╔═══════════════════════════════════════════╗
+ * ║  INDEX — Plantilla principal             ║
+ * ║  Renderiza el contenido Gutenberg de     ║
+ * ║  la página actual mediante the_content() ║
+ * ╚═══════════════════════════════════════════╝
  */
 ?>
 <!DOCTYPE html>
@@ -9,7 +12,6 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php wp_title( '|', true, 'right' ); ?></title>
     <?php wp_head(); ?>
     <style>
         /* Estilos base mínimos para que el tema se vea limpio */
