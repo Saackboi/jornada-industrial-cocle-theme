@@ -1,8 +1,12 @@
 <?php
 /**
- * Vista del bloque JI - Separador de Sección
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Separador de Sección   ║
+ * ║  Section divider (space or curve)         ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Variable extraction
 $divider_type = isset( $attributes['divider_type'] ) ? $attributes['divider_type'] : 'space';
 $divider_size = isset( $attributes['divider_size'] ) ? $attributes['divider_size'] : 'medium';
 $from_tone    = isset( $attributes['from_tone'] ) ? $attributes['from_tone'] : 'light';

@@ -1,8 +1,12 @@
 <?php
 /**
- * Registro del bloque: JI - Separador de Sección
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK: JI - Separador de Sección         ║
+ * ║  Registro, estilos y callback del bloque  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Encola estilos
 add_action( 'init', 'jornada_industrial_register_style_ji_section_divider' );
 function jornada_industrial_register_style_ji_section_divider() {
     wp_enqueue_block_style(
@@ -15,6 +19,7 @@ function jornada_industrial_register_style_ji_section_divider() {
     );
 }
 
+// Registra bloque
 add_action( 'init', 'jornada_industrial_register_block_ji_section_divider' );
 function jornada_industrial_register_block_ji_section_divider() {
     if ( function_exists( 'lazyblocks' ) ) {
@@ -84,12 +89,14 @@ function jornada_industrial_register_block_ji_section_divider() {
     }
 }
 
+// Asigna callbacks
 add_action( 'init', 'jornada_industrial_callbacks_ji_section_divider' );
 function jornada_industrial_callbacks_ji_section_divider() {
     add_filter( 'lazyblock/ji-section-divider/frontend_callback', 'jornada_ji_section_divider_render', 10, 2 );
     add_filter( 'lazyblock/ji-section-divider/editor_callback', 'jornada_ji_section_divider_render', 10, 2 );
 }
 
+// Renderiza
 if ( ! function_exists( 'jornada_ji_section_divider_render' ) ) {
     function jornada_ji_section_divider_render( $output, $attributes ) {
         ob_start();

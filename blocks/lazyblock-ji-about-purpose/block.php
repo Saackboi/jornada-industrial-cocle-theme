@@ -1,9 +1,17 @@
 <?php
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - About Purpose          ║
+ * ║  Purpose section with background image    ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+// Variable extraction
 $title = $attributes['title'] ?? '';
 $content = $attributes['content'] ?? '';
 $bg_image = $attributes['bg_image'] ?? '';
 
-// Fallback image
+// Fallback: default background image
 $bg_url = 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2000&auto=format&fit=crop';
 if ( ! empty( $bg_image['url'] ) ) {
     $bg_url = esc_url( $bg_image['url'] );

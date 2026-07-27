@@ -1,8 +1,12 @@
 <?php
 /**
- * Vista del bloque JI - Footer General
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Footer General         ║
+ * ║  Site footer with columns and copyright   ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Variable extraction
 $title       = isset( $attributes['title'] ) ? $attributes['title'] : 'III Jornada Industrial';
 $descripcion = isset( $attributes['descripcion'] ) ? $attributes['descripcion'] : 'Un evento organizado por la Facultad de Ingeniería Industrial de la Universidad Tecnológica de Panamá, Centro Regional de Coclé.';
 $copyright   = isset( $attributes['copyright'] ) ? $attributes['copyright'] : '© 2025 UTP Coclé. Todos los derechos reservados.';

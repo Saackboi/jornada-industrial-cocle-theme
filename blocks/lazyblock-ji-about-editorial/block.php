@@ -1,9 +1,12 @@
 <?php
 /**
- * Block template for JI - About Editorial
- * Premium Magazine-Layout: Split screen with bold typographic cards
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - About Editorial        ║
+ * ║  Split-screen magazine layout with cards  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Variable extraction
 $que_somos = isset($attributes['que_somos_text']) && !empty($attributes['que_somos_text']) ? $attributes['que_somos_text'] : 'Escribe aquí la introducción...';
 $mision = isset($attributes['mision_text']) && !empty($attributes['mision_text']) ? $attributes['mision_text'] : 'Escribe aquí la misión...';
 $vision = isset($attributes['vision_text']) && !empty($attributes['vision_text']) ? $attributes['vision_text'] : 'Escribe aquí la visión...';

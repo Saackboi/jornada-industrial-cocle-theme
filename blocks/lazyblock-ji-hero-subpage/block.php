@@ -1,14 +1,19 @@
 <?php
 /**
- * Vista del bloque: JI - Cabecera de Subpágina
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Cabecera Subpágina     ║
+ * ║  Subpage hero header with background      ║
+ * ╚═══════════════════════════════════════════╝
  */
+
+// Variable extraction
 $eyebrow = isset( $attributes['eyebrow'] ) ? $attributes['eyebrow'] : '';
 $title = isset( $attributes['title'] ) ? $attributes['title'] : '';
 $subtitle = isset( $attributes['subtitle'] ) ? $attributes['subtitle'] : '';
 $bg_image = isset( $attributes['bg_image'] ) ? $attributes['bg_image'] : '';
 $logo_url = function_exists( 'ji_get_block_image_url' ) ? ji_get_block_image_url( $bg_image ) : '';
 
-// Split title by words to put color on last word or just render as is
+// Title formatting: accent color on last word
 $title_html = esc_html($title);
 if ( ! empty( $title ) ) {
     $words = explode( ' ', $title );

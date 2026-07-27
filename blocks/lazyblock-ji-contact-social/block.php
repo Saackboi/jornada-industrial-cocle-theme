@@ -1,5 +1,12 @@
 <?php
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Contacto y Social      ║
+ * ║  Contact cards and social media links     ║
+ * ╚═══════════════════════════════════════════╝
+ */
 
+// Variable extraction
 $section_label = isset( $attributes['section_label'] ) ? $attributes['section_label'] : 'Contacto';
 $section_title = isset( $attributes['section_title'] ) ? $attributes['section_title'] : 'Conecta con la Jornada';
 $section_desc  = isset( $attributes['section_description'] ) ? $attributes['section_description'] : '';

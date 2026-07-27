@@ -1,8 +1,12 @@
 <?php
 /**
- * Registro del bloque: JI - Navegación Principal V2
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK: JI - Navegación Principal V2      ║
+ * ║  Registro, estilos y callback del bloque  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Encola estilos
 add_action( 'init', 'jornada_industrial_register_style_ji_navbar' );
 function jornada_industrial_register_style_ji_navbar() {
     wp_enqueue_block_style(
@@ -15,6 +19,7 @@ function jornada_industrial_register_style_ji_navbar() {
     );
 }
 
+// Registra bloque
 add_action( 'init', 'jornada_industrial_register_block_ji_navbar' );
 function jornada_industrial_register_block_ji_navbar() {
     if ( function_exists( 'lazyblocks' ) ) {
@@ -85,12 +90,14 @@ function jornada_industrial_register_block_ji_navbar() {
     }
 }
 
+// Asigna callbacks
 add_action( 'init', 'jornada_industrial_callbacks_ji_navbar' );
 function jornada_industrial_callbacks_ji_navbar() {
     add_filter( 'lazyblock/ji-navbar/frontend_callback', 'jornada_ji_navbar_render', 10, 2 );
     add_filter( 'lazyblock/ji-navbar/editor_callback', 'jornada_ji_navbar_render', 10, 2 );
 }
 
+// Renderiza
 if ( ! function_exists( 'jornada_ji_navbar_render' ) ) {
     function jornada_ji_navbar_render( $output, $attributes ) {
         ob_start();

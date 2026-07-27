@@ -1,8 +1,12 @@
 <?php
 /**
- * Registro del bloque: JI-OLD - Hero Principal (Beta)
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK: JI-OLD - Hero Principal (Beta)    ║
+ * ║  Registro, estilos y callback del bloque  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Encola estilos
 add_action( 'init', 'jornada_industrial_register_style_ji_hero' );
 function jornada_industrial_register_style_ji_hero() {
     wp_enqueue_block_style(
@@ -15,6 +19,7 @@ function jornada_industrial_register_style_ji_hero() {
     );
 }
 
+// Registra bloque
 add_action( 'init', 'jornada_industrial_register_block_ji_hero' );
 function jornada_industrial_register_block_ji_hero() {
     if ( function_exists( 'lazyblocks' ) ) {
@@ -39,12 +44,14 @@ function jornada_industrial_register_block_ji_hero() {
     }
 }
 
+// Asigna callbacks
 add_action( 'init', 'jornada_industrial_callbacks_ji_hero' );
 function jornada_industrial_callbacks_ji_hero() {
     add_filter( 'lazyblock/ji-hero/frontend_callback', 'jornada_ji_hero_render', 10, 2 );
     add_filter( 'lazyblock/ji-hero/editor_callback', 'jornada_ji_hero_render', 10, 2 );
 }
 
+// Renderiza
 if ( ! function_exists( 'jornada_ji_hero_render' ) ) {
     function jornada_ji_hero_render( $output, $attributes ) {
         ob_start();

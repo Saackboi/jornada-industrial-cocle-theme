@@ -1,12 +1,16 @@
 <?php
 /**
- * Vista del bloque JI - Contador Regresivo
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Contador Regresivo     ║
+ * ║  Countdown timer with days/hours/min/sec ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Variable extraction
 $target_date = isset( $attributes['target_date'] ) ? $attributes['target_date'] : '2026-06-15 09:00:00';
 $unique_id   = uniqid( 'ji-countdown-' );
 
-// Clases base del bloque
+// Container classes
 $clases = 'bloque-ji-countdown';
 if ( isset( $attributes['align'] ) && ! empty( $attributes['align'] ) ) {
     $clases .= ' align' . $attributes['align'];

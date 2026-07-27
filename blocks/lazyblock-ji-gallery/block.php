@@ -1,8 +1,12 @@
 <?php
 /**
- * Vista del bloque JI - Galería Dinámica
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Galería Dinámica       ║
+ * ║  Image gallery with marquee and lightbox  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Variable extraction
 $titulo = isset( $attributes['titulo'] ) ? $attributes['titulo'] : 'Visión del Evento';
 $images = isset( $attributes['images'] ) && is_array( $attributes['images'] ) ? $attributes['images'] : array();
 

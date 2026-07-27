@@ -1,8 +1,16 @@
 <?php
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Objetivos              ║
+ * ║  Bento-box objectives grid                ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+// Variable extraction
 $title = $attributes['title'] ?? 'Nuestros Objetivos';
 $objectives = $attributes['objectives'] ?? [];
 
-// Default data if empty
+// Fallback: default objectives list
 if ( empty( $objectives ) ) {
     $objectives = [
         ['obj_title' => 'Mentalidad Emprendedora', 'obj_desc' => 'Promover la mentalidad emprendedora entre estudiantes y profesionales...'],

@@ -1,14 +1,18 @@
 <?php
 /**
- * Vista del bloque JI - Navegación Principal
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Navegación Principal   ║
+ * ║  Header navigation with links and CTA     ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Variable extraction
 $brand_text = isset( $attributes['brand_text'] ) ? $attributes['brand_text'] : 'Nnnerlw';
 $nav_links  = isset( $attributes['nav_links'] ) && is_array( $attributes['nav_links'] ) ? $attributes['nav_links'] : array();
 $btn_text   = isset( $attributes['btn_text'] ) ? $attributes['btn_text'] : 'Register';
 $btn_url    = isset( $attributes['btn_url'] ) ? $attributes['btn_url'] : '#';
 
-// Clases base del bloque
+// Container classes
 $clases = 'bloque-ji-nav';
 if ( isset( $attributes['align'] ) && ! empty( $attributes['align'] ) ) {
     $clases .= ' align' . $attributes['align'];

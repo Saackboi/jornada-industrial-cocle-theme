@@ -1,8 +1,12 @@
 <?php
 /**
- * Registro del bloque: Call to Action (Beta)
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK: Call to Action (Beta)             ║
+ * ║  Registro, estilos y callback del bloque  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Encola estilos
 add_action( 'init', 'jornada_industrial_register_style_cta' );
 function jornada_industrial_register_style_cta() {
     wp_enqueue_block_style(
@@ -15,6 +19,7 @@ function jornada_industrial_register_style_cta() {
     );
 }
 
+// Registra bloque
 add_action( 'init', 'jornada_industrial_register_block_cta' );
 function jornada_industrial_register_block_cta() {
     if ( function_exists( 'lazyblocks' ) ) {
@@ -36,12 +41,14 @@ function jornada_industrial_register_block_cta() {
     }
 }
 
+// Asigna callbacks
 add_action( 'init', 'jornada_industrial_callbacks_cta' );
 function jornada_industrial_callbacks_cta() {
     add_filter( 'lazyblock/cta/frontend_callback', 'jornada_cta_render', 10, 2 );
     add_filter( 'lazyblock/cta/editor_callback', 'jornada_cta_render', 10, 2 );
 }
 
+// Renderiza
 if ( ! function_exists( 'jornada_cta_render' ) ) {
     function jornada_cta_render( $output, $attributes ) {
         ob_start();

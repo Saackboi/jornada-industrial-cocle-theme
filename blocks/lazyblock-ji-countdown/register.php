@@ -1,8 +1,12 @@
 <?php
 /**
- * Registro del bloque: JI - Contador Regresivo
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK: JI - Contador Regresivo           ║
+ * ║  Registro, estilos y callback del bloque  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Encola estilos
 add_action( 'init', 'jornada_industrial_register_style_ji_countdown' );
 function jornada_industrial_register_style_ji_countdown() {
     wp_enqueue_block_style(
@@ -15,6 +19,7 @@ function jornada_industrial_register_style_ji_countdown() {
     );
 }
 
+// Registra bloque
 add_action( 'init', 'jornada_industrial_register_block_ji_countdown' );
 function jornada_industrial_register_block_ji_countdown() {
     if ( function_exists( 'lazyblocks' ) ) {
@@ -33,12 +38,14 @@ function jornada_industrial_register_block_ji_countdown() {
     }
 }
 
+// Asigna callbacks
 add_action( 'init', 'jornada_industrial_callbacks_ji_countdown' );
 function jornada_industrial_callbacks_ji_countdown() {
     add_filter( 'lazyblock/ji-countdown/frontend_callback', 'jornada_ji_countdown_render', 10, 2 );
     add_filter( 'lazyblock/ji-countdown/editor_callback', 'jornada_ji_countdown_render', 10, 2 );
 }
 
+// Renderiza
 if ( ! function_exists( 'jornada_ji_countdown_render' ) ) {
     function jornada_ji_countdown_render( $output, $attributes ) {
         ob_start();

@@ -1,12 +1,18 @@
 <?php
 /**
- * Vista del bloque: JI - Comisiones Especializadas
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Comisiones             ║
+ * ║  Accordion-style commissions showcase     ║
+ * ╚═══════════════════════════════════════════╝
  */
+
+// Variable extraction
 $label = isset( $attributes['section_label'] ) ? $attributes['section_label'] : '';
 $title = isset( $attributes['section_title'] ) ? $attributes['section_title'] : '';
 $commissions_raw = isset( $attributes['commissions'] ) ? $attributes['commissions'] : array();
 $commissions = array();
 
+// Data source: editor array or decoded JSON string
 if ( is_array( $commissions_raw ) && count( $commissions_raw ) > 0 ) {
     $commissions = $commissions_raw;
 } elseif ( is_string( $commissions_raw ) && ! empty( $commissions_raw ) ) {
@@ -16,7 +22,7 @@ if ( is_array( $commissions_raw ) && count( $commissions_raw ) > 0 ) {
     }
 }
 
-// Fallback: leer desde wp_options
+// Fallback: load from wp_options
 if ( empty( $commissions ) ) {
     $from_options = get_option( 'ji_org_comisiones', array() );
     if ( is_array( $from_options ) && count( $from_options ) > 0 ) {
@@ -24,7 +30,7 @@ if ( empty( $commissions ) ) {
     }
 }
 
-// Format Title
+// Title formatting: accent on last word
 $title_html = esc_html($title);
 if ( ! empty( $title ) ) {
     $words = explode( ' ', $title );

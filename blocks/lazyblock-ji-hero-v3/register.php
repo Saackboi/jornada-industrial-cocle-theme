@@ -1,8 +1,12 @@
 <?php
 /**
- * Registro del bloque: JI - Hero V3
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK: JI - Hero V3                      ║
+ * ║  Registro, estilos y callback del bloque  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Encola estilos
 add_action( 'init', 'jornada_industrial_register_style_ji_hero_v3' );
 function jornada_industrial_register_style_ji_hero_v3() {
     wp_enqueue_block_style(
@@ -15,6 +19,7 @@ function jornada_industrial_register_style_ji_hero_v3() {
     );
 }
 
+// Registra bloque
 add_action( 'init', 'jornada_industrial_register_block_ji_hero_v3' );
 function jornada_industrial_register_block_ji_hero_v3() {
     if ( function_exists( 'lazyblocks' ) ) {
@@ -59,12 +64,14 @@ function jornada_industrial_register_block_ji_hero_v3() {
     }
 }
 
+// Asigna callbacks
 add_action( 'init', 'jornada_industrial_callbacks_ji_hero_v3' );
 function jornada_industrial_callbacks_ji_hero_v3() {
     add_filter( 'lazyblock/ji-hero-v3/frontend_callback', 'jornada_ji_hero_v3_render', 10, 2 );
     add_filter( 'lazyblock/ji-hero-v3/editor_callback', 'jornada_ji_hero_v3_render', 10, 2 );
 }
 
+// Renderiza
 if ( ! function_exists( 'jornada_ji_hero_v3_render' ) ) {
     function jornada_ji_hero_v3_render( $output, $attributes ) {
         ob_start();

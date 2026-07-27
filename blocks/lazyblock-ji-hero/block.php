@@ -1,8 +1,12 @@
 <?php
 /**
- * Vista del bloque JI - Hero Principal
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Hero Principal         ║
+ * ║  Main hero with title, description, CTA   ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Variable extraction
 $titulo         = isset( $attributes['titulo'] ) ? $attributes['titulo'] : 'Find In Interesting Services And Buy Now Anything.';
 $descripcion    = isset( $attributes['descripcion'] ) ? $attributes['descripcion'] : '';
 $btn1_text      = isset( $attributes['btn1_text'] ) ? $attributes['btn1_text'] : 'Get Started';
@@ -11,7 +15,7 @@ $btn2_text      = isset( $attributes['btn2_text'] ) ? $attributes['btn2_text'] :
 $btn2_url       = isset( $attributes['btn2_url'] ) ? $attributes['btn2_url'] : '#';
 $imagen_derecha = isset( $attributes['imagen_derecha'] ) ? $attributes['imagen_derecha'] : null;
 
-// Clases base del bloque
+// Container classes
 $clases = 'bloque-ji-hero';
 if ( isset( $attributes['align'] ) && ! empty( $attributes['align'] ) ) {
     $clases .= ' align' . $attributes['align'];

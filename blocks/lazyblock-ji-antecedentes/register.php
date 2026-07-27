@@ -1,9 +1,12 @@
 <?php
 /**
- * Registro del bloque: JI - Antecedentes
- * Versión dinámica con repeater completo por edición.
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK: JI - Antecedentes                 ║
+ * ║  Registro, estilos y callback del bloque  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Encola estilos
 add_action( 'init', 'jornada_industrial_register_style_ji_antecedentes' );
 function jornada_industrial_register_style_ji_antecedentes() {
     wp_enqueue_block_style(
@@ -25,6 +28,7 @@ function jornada_industrial_register_style_ji_antecedentes() {
     );
 }
 
+// Registra bloque
 add_action( 'init', 'jornada_industrial_register_block_ji_antecedentes' );
 function jornada_industrial_register_block_ji_antecedentes() {
     if ( function_exists( 'lazyblocks' ) ) {
@@ -165,12 +169,14 @@ function jornada_industrial_register_block_ji_antecedentes() {
     }
 }
 
+// Asigna callbacks
 add_action( 'init', 'jornada_industrial_callbacks_ji_antecedentes' );
 function jornada_industrial_callbacks_ji_antecedentes() {
     add_filter( 'lazyblock/ji-antecedentes/frontend_callback', 'jornada_ji_antecedentes_render', 10, 2 );
     add_filter( 'lazyblock/ji-antecedentes/editor_callback',  'jornada_ji_antecedentes_render', 10, 2 );
 }
 
+// Renderiza
 if ( ! function_exists( 'jornada_ji_antecedentes_render' ) ) {
     function jornada_ji_antecedentes_render( $output, $attributes ) {
         ob_start();

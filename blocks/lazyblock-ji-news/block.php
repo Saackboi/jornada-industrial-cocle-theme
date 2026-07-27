@@ -1,8 +1,12 @@
 <?php
 /**
- * Vista del bloque JI - Grid de Noticias
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Grid de Noticias       ║
+ * ║  Dynamic news grid with WP posts query    ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Variable extraction
 $overline      = isset( $attributes['overline'] ) ? $attributes['overline'] : 'Actualidad';
 $section_title = isset( $attributes['section_title'] ) ? $attributes['section_title'] : 'Noticias destacadas';
 $more_url      = isset( $attributes['more_url'] ) ? $attributes['more_url'] : '#';

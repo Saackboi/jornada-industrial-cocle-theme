@@ -1,8 +1,12 @@
 <?php
 /**
- * Registro del bloque: JI - Grid de Noticias
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK: JI - Grid de Noticias             ║
+ * ║  Registro, estilos y callback del bloque  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Encola estilos
 add_action( 'init', 'jornada_industrial_register_style_ji_news' );
 function jornada_industrial_register_style_ji_news() {
     wp_enqueue_block_style(
@@ -15,6 +19,7 @@ function jornada_industrial_register_style_ji_news() {
     );
 }
 
+// Registra bloque
 add_action( 'init', 'jornada_industrial_register_block_ji_news' );
 function jornada_industrial_register_block_ji_news() {
     if ( function_exists( 'lazyblocks' ) ) {
@@ -74,12 +79,14 @@ function jornada_industrial_register_block_ji_news() {
     }
 }
 
+// Asigna callbacks
 add_action( 'init', 'jornada_industrial_callbacks_ji_news' );
 function jornada_industrial_callbacks_ji_news() {
     add_filter( 'lazyblock/ji-news/frontend_callback', 'jornada_ji_news_render', 10, 2 );
     add_filter( 'lazyblock/ji-news/editor_callback', 'jornada_ji_news_render', 10, 2 );
 }
 
+// Renderiza
 if ( ! function_exists( 'jornada_ji_news_render' ) ) {
     function jornada_ji_news_render( $output, $attributes ) {
         ob_start();

@@ -1,8 +1,12 @@
 <?php
 /**
- * Vista del bloque JI - Navegación Principal V2
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Navegación Principal V2║
+ * ║  Navigation bar with dropdown submenus    ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Variable extraction
 $brand_text = isset( $attributes['brand_text'] ) ? $attributes['brand_text'] : 'III Jornada Industrial';
 $brand_logo = isset( $attributes['brand_logo'] ) ? $attributes['brand_logo'] : '';
 $logo_url   = function_exists( 'ji_get_block_image_url' ) ? ji_get_block_image_url( $brand_logo ) : '';
@@ -10,7 +14,7 @@ $nav_links      = isset( $attributes['nav_links'] ) && is_array( $attributes['na
 $btn_text       = isset( $attributes['btn_text'] ) ? $attributes['btn_text'] : 'REGISTRO';
 $btn_url        = isset( $attributes['btn_url'] ) ? $attributes['btn_url'] : '#';
 
-// Clases base
+// Container classes
 $clases = 'bloque-ji-navbar';
 if ( isset( $attributes['align'] ) && ! empty( $attributes['align'] ) ) {
     $clases .= ' align' . $attributes['align'];

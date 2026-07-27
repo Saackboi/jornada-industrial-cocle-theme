@@ -1,8 +1,12 @@
 <?php
 /**
- * Registro del bloque: JI - Footer General
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK: JI - Footer General               ║
+ * ║  Registro, estilos y callback del bloque  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Encola estilos
 add_action( 'init', 'jornada_industrial_register_style_ji_footer' );
 function jornada_industrial_register_style_ji_footer() {
     wp_enqueue_block_style(
@@ -15,6 +19,7 @@ function jornada_industrial_register_style_ji_footer() {
     );
 }
 
+// Registra bloque
 add_action( 'init', 'jornada_industrial_register_block_ji_footer' );
 function jornada_industrial_register_block_ji_footer() {
     if ( function_exists( 'lazyblocks' ) ) {
@@ -83,12 +88,14 @@ function jornada_industrial_register_block_ji_footer() {
     }
 }
 
+// Asigna callbacks
 add_action( 'init', 'jornada_industrial_callbacks_ji_footer' );
 function jornada_industrial_callbacks_ji_footer() {
     add_filter( 'lazyblock/ji-footer/frontend_callback', 'jornada_ji_footer_render', 10, 2 );
     add_filter( 'lazyblock/ji-footer/editor_callback', 'jornada_ji_footer_render', 10, 2 );
 }
 
+// Renderiza
 if ( ! function_exists( 'jornada_ji_footer_render' ) ) {
     function jornada_ji_footer_render( $output, $attributes ) {
         ob_start();

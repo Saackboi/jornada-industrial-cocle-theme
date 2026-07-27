@@ -1,7 +1,9 @@
 <?php
 /**
- * Vista del bloque: JI - Antecedentes
- * Versión dinámica — todas las ediciones son editables desde el inspector.
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Antecedentes           ║
+ * ║  Previous editions with tabs and gallery  ║
+ * ╚═══════════════════════════════════════════╝
  */
 
 // ── Helper: obtener URL de imagen desde dato de control ───────────────────

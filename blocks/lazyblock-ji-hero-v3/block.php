@@ -1,8 +1,12 @@
 <?php
 /**
- * Vista del bloque JI - Hero V3
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Hero V3                ║
+ * ║  Hero with background image, title, cards ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Variable extraction
 $overline    = isset( $attributes['overline'] ) ? $attributes['overline'] : 'Universidad Tecnológica de Panamá';
 $titulo      = isset( $attributes['titulo'] ) ? $attributes['titulo'] : "UTP Coclé\nSede de la III Jornada Industrial";
 $descripcion = isset( $attributes['descripcion'] ) ? $attributes['descripcion'] : 'Unificando la ingeniería, logística y el mercadeo internacional en un evento sin precedentes en el interior del país.';
@@ -10,7 +14,7 @@ $descripcion = isset( $attributes['descripcion'] ) ? $attributes['descripcion'] 
 $default_bg_url = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBwyLVd_QuBn8HpihInNIVIC9w3s90YYiyvbxBQJgL8Xi-7hnIQtls2ApQY2yO8cHMyRFwP-NcgxzIhsbHvZ-jpFAbr19ylr6-kgDqZHmQgxZxqyd6QizU4VRD57O0SFA3nkIinduvmKnoP63acqQv4RQe__ozGDFRbgnA-upI8Lxirz5pXaguWdP96dZ3mwoLWfev9rzWOHBvMkHK_tfPaVno-rmQ6sjrKCgxe9iXfHtv6RmU6aJhIgysjiRHj3CYVuG7PmOa_rIg';
 $bg_url = isset( $attributes['bg_image'] ) ? ji_get_block_image_url( $attributes['bg_image'], $default_bg_url ) : $default_bg_url;
 
-// Escribir los atributos a un archivo temporal de depuración para ver qué está pasando
+// Debug: write attributes to temp file
 file_put_contents( __DIR__ . '/debug_hero.txt', "TIMESTAMP: " . time() . "\n" . print_r( $attributes, true ) );
 ?>
 <!-- DEBUG HERO ATTRIBUTES: 
@@ -18,9 +22,10 @@ file_put_contents( __DIR__ . '/debug_hero.txt', "TIMESTAMP: " . time() . "\n" . 
 -->
 <?php
 
+// Repeater: cards
 $cards = isset( $attributes['cards'] ) && is_array( $attributes['cards'] ) ? $attributes['cards'] : array();
 
-// Fallback robusto para las 3 tarjetas de la UI si el repetidor está vacío
+// Fallback: default 3 cards if repeater is empty
 if ( empty( $cards ) ) {
     $cards = array(
         array(
@@ -38,7 +43,7 @@ if ( empty( $cards ) ) {
     );
 }
 
-// Clases base del bloque
+// Container classes
 $clases = 'bloque-ji-hero-v3';
 if ( isset( $attributes['align'] ) && ! empty( $attributes['align'] ) ) {
     $clases .= ' align' . $attributes['align'];
@@ -47,7 +52,7 @@ if ( isset( $attributes['className'] ) && ! empty( $attributes['className'] ) ) 
     $clases .= ' ' . $attributes['className'];
 }
 
-// Convertir los saltos de línea del título en <br>
+// Title formatting: convert line breaks and highlight specific text
 $titulo_br = nl2br( esc_html( $titulo ) );
 // Si el título contiene "Sede de la III Jornada Industrial", envolver esa parte en un span con gradiente
 $titulo_html = str_replace(

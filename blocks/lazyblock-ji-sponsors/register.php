@@ -1,5 +1,12 @@
 <?php
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK: JI - Patrocinadores               ║
+ * ║  Registro, estilos y callback del bloque  ║
+ * ╚═══════════════════════════════════════════╝
+ */
 
+// Encola estilos
 add_action( 'init', 'jornada_industrial_register_style_ji_sponsors' );
 function jornada_industrial_register_style_ji_sponsors() {
     wp_enqueue_block_style(
@@ -12,6 +19,7 @@ function jornada_industrial_register_style_ji_sponsors() {
     );
 }
 
+// Registra bloque
 add_action( 'init', 'jornada_industrial_register_block_ji_sponsors' );
 function jornada_industrial_register_block_ji_sponsors() {
     if ( function_exists( 'lazyblocks' ) ) {
@@ -56,12 +64,14 @@ function jornada_industrial_register_block_ji_sponsors() {
     }
 }
 
+// Asigna callbacks
 add_action( 'init', 'jornada_industrial_callbacks_ji_sponsors' );
 function jornada_industrial_callbacks_ji_sponsors() {
     add_filter( 'lazyblock/ji-sponsors/frontend_callback', 'jornada_ji_sponsors_render', 10, 2 );
     add_filter( 'lazyblock/ji-sponsors/editor_callback', 'jornada_ji_sponsors_render', 10, 2 );
 }
 
+// Renderiza
 if ( ! function_exists( 'jornada_ji_sponsors_render' ) ) {
     function jornada_ji_sponsors_render( $output, $attributes ) {
         ob_start();

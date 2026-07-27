@@ -1,4 +1,12 @@
 <?php
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK: JI - About Purpose                ║
+ * ║  Registro, estilos y callback del bloque  ║
+ * ╚═══════════════════════════════════════════╝
+ */
+
+// Registra bloque
 add_action('init', function() {
     if ( function_exists( 'lazyblocks' ) ) :
 
@@ -94,6 +102,7 @@ add_action('init', function() {
     endif;
 });
 
+// Encola estilos
 add_action( 'init', function() {
     wp_enqueue_block_style(
         'lazyblock/ji-about-purpose',
@@ -105,11 +114,13 @@ add_action( 'init', function() {
     );
 });
 
+// Asigna callbacks
 add_action( 'init', function() {
     add_filter( 'lazyblock/ji-about-purpose/frontend_callback', 'jornada_ji_about_purpose_render', 10, 2 );
     add_filter( 'lazyblock/ji-about-purpose/editor_callback', 'jornada_ji_about_purpose_render', 10, 2 );
 });
 
+// Renderiza
 if ( ! function_exists( 'jornada_ji_about_purpose_render' ) ) {
     function jornada_ji_about_purpose_render( $output, $attributes ) {
         ob_start();

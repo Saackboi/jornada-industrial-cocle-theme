@@ -1,5 +1,12 @@
 <?php
+/**
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Patrocinadores         ║
+ * ║  Sponsors marquee with logo carousel      ║
+ * ╚═══════════════════════════════════════════╝
+ */
 
+// Variable extraction
 $section_label = isset( $attributes['section_label'] ) ? $attributes['section_label'] : 'Aliados estratégicos';
 $section_title = isset( $attributes['section_title'] ) ? $attributes['section_title'] : 'Nuestros Patrocinadores';
 $section_desc  = isset( $attributes['section_description'] ) ? $attributes['section_description'] : '';
@@ -20,6 +27,7 @@ if ( empty( $sponsors ) ) {
 
 $sponsor_rows = array_chunk( $sponsors, 5 );
 
+// Container classes
 $clases = 'bloque-ji-sponsors';
 if ( isset( $attributes['align'] ) && ! empty( $attributes['align'] ) ) {
     $clases .= ' align' . $attributes['align'];
@@ -46,6 +54,7 @@ if ( isset( $attributes['className'] ) && ! empty( $attributes['className'] ) ) 
 
     <div class="bloque-ji-sponsors-marquee">
         <?php
+        // Render helper for individual sponsor item
         $render_item = function( $sponsor ) {
             $logo_url = isset( $sponsor['logo'] ) ? ji_get_block_image_url( $sponsor['logo'] ) : '';
             $name     = isset( $sponsor['name'] ) ? $sponsor['name'] : 'Patrocinador';
@@ -69,6 +78,7 @@ if ( isset( $attributes['className'] ) && ! empty( $attributes['className'] ) ) 
             <?php
         };
 
+        // Render helper for marquee track with duplicate items
         $render_track = function( $row_sponsors, $is_reverse ) use ( $render_item ) {
             $class = 'bloque-ji-sponsors-track';
             if ( $is_reverse ) {

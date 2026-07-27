@@ -1,11 +1,15 @@
 <?php
 /**
- * Vista del bloque JI - Enlaces Rápidos (Logos / Labels)
+ * ╔═══════════════════════════════════════════╗
+ * ║  BLOCK VIEW: JI - Enlaces Rápidos        ║
+ * ║  Quick links / labels list                ║
+ * ╚═══════════════════════════════════════════╝
  */
 
+// Variable extraction
 $labels_list = isset( $attributes['labels_list'] ) && is_array( $attributes['labels_list'] ) ? $attributes['labels_list'] : array();
 
-// Clases base del bloque
+// Container classes
 $clases = 'bloque-ji-labels';
 if ( isset( $attributes['align'] ) && ! empty( $attributes['align'] ) ) {
     $clases .= ' align' . $attributes['align'];
